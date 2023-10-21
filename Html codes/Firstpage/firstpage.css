@@ -1,0 +1,110 @@
+*{
+    margin: none;
+    /* background-color: rgb(210, 204, 204); */
+    /* background-color: rgb(133, 131, 131); */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.firstBar{
+    background-color: rgb(133, 131, 131);
+    height: 100px;
+    display: flex;
+    /* padding: 10px 10px 5px; */
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    width: 100%;
+    justify-content: space-evenly;
+    /* padding: 10px 10px; */
+}
+.logoBox{
+    display: flex;
+    
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    height: 100px;
+    width: 300px;
+}
+.logoImage{
+    margin-left: 30px;
+    background-image: url(logo1.jpg);
+    width: 100px;
+    height: 60px;
+
+}
+.middleHeader{
+    height: 133px;
+    width: 850px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background-color: transparent;
+    /* border: 3px solid yellow; */
+    padding: 0px 0px ;
+}
+.optionUl{
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+    align-items: center;
+    /* justify-content: center; */
+    align-content: center;
+    
+    height: 100px;
+    /* border: 2px solid rgb(154, 23, 23); */
+
+}
+/* .optionList{ */
+    .optionUl li{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    /* height: 100px; */
+    /* height: 80px; */
+    width: 120px;
+    height: 40px;
+    margin-right: 10px;
+    background-color: aquamarine;
+    /* border: 2px soild black; */
+    
+    
+}
+.optionUl a{
+    text-decoration: none;
+    /* border: 2px solid black; */
+    display: flex;
+    text-align: center;
+    align-items: center;
+    background-color: rgb(255, 145, 0);
+    border-radius: 4px;
+    box-shadow: 2px 1px 4px beige;
+    /* height: 100px; */
+    font-size: larger;
+    height: 40px;
+    justify-content: center;
+    align-content: center;
+    width: 120px;
+}
+
+.rightHeader{
+    display: flex;
+    height:100px ;
+    width: 350px;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+.rightHeader button{
+    height: 40px;
+    width: 150px;
+    border-radius: 10px;
+    box-shadow: 6px 3px 10px;
+}
+
+.rightHeader a{
+    text-decoration: none;
+    font-size: larger;
+}

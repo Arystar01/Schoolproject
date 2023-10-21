@@ -1,0 +1,93 @@
+*{
+    margin: none;
+    font-family: Arial, Helvetica, sans-serif;
+   
+    /* background-size: cover; */
+    
+}
+.mainBoxDoc{
+    
+    margin-top: 150px;
+    margin-left: 550px;
+    border: 2px solid black;
+    width: 400px;
+    height: auto;
+    padding: 20px 20px;
+     /* background-image: url(docMainimage.png); */
+   
+    
+
+}
+.text4{
+    padding: 0px 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: x-large;
+    font-weight: bold;
+    /* color: blueviolet; */
+}
+.text5{
+    padding: 0px 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    font-weight: 200;
+    /* color: aqua; */
+    /* font-display:; */
+
+}
+.formAction1{
+    display:block;
+    flex-direction: column;
+}
+label{
+    height: 20px;
+    width: 100px;
+    margin: 0px 5px ;
+    padding: 5px 5px;
+    font-size: large; 
+    display: block;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
+    font-display:inherit;
+    /* border: 2px solid red; */
+  
+   
+}
+input{
+    height: 30px;
+    width: 340px;
+    margin: 5px 5px;
+    padding: 5px 5px ;
+    display: block;
+    /* border: 2px solid red; */
+   
+}
+.submitLogin{
+    height: 40px;
+    margin: 15px 5px 0px;
+    font-size: large;
+    color: white;
+    background-color: rgb(71, 129, 228);
+    cursor: pointer;
+}
+.submitLogin:hover{
+    background-color: azure;
+    color: black;
+}
+.forgetButton{
+    height: 40px;
+    width: 340px;
+    margin: 0px 5px;
+    font-size: large;
+    cursor: pointer;
+    background-color: rgb(180, 2, 225);
+    color: rgb(125, 19, 225);
+    color: beige;
+    
+}
+
+.forgetButton:hover{
+    background-color: blueviolet;
+    color: rgb(125, 19, 225);
+    color: beige;
+   
+}
