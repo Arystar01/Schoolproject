@@ -1,0 +1,118 @@
+* {
+    margin: none;
+    background: none;
+}
+
+.header {
+    /* width:400px ; */
+    height: 140px;
+    /* padding: 10px 10px ; */
+    display: flex;
+    /* justify-content: space-around; */
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: rgb(226, 226, 205);
+}
+
+.headerLogo img {
+    width: 200px;
+    height: 110px;
+}
+
+.headerTitle {
+    width: 700px;
+    height: 50px;
+    margin-left: 300px;
+    padding-top: 50px;
+    font-size: x-large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: rgb(226, 226, 205);
+    color: blue;
+
+}
+
+.navBar {
+    background-color: rgb(27, 26, 26);
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    height: 80px;
+}
+
+.navOption ul {
+    list-style: none;
+    display: flex;
+    height: 80px;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+.navOption li {
+    width: 150px;
+    height: 30px;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    /* border: 2px solid yellow; */
+
+}
+
+.navOption a {
+    height: 30px;
+    text-decoration: none;
+    width: 150px;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    /* border: 2px solid red; */
+    background-color: whitesmoke;
+    color: Blue;
+    cursor: pointer;
+}
+
+.navOption a:hover {
+    background-color: rgb(211, 211, 91);
+    color: black;
+}
+.container{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+}
+.containerLeftOption ul{
+    width: 130px;
+    height:300px;
+    align-items: left;
+    list-style: none;
+}
+.containerLeftOption li{
+
+}
+
+.containerLeftOption a {
+    text-decoration: none;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    background-color: pink;
+    margin-bottom: 20px;
+    height: 40px;
+}
+.containerRight{
+    align-items: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    width: 1000px;
+}
+
