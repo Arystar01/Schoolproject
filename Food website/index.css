@@ -5,8 +5,11 @@
 }
 
 .container {
-    display: grid;
-    grid-template-columns: 340px 1fr 300px;
+    display: flex;
+    justify-content: center;
+    /* position: sticky; */
+    /* grid-template-columns: 340px 1fr 300px; */
+    /* position: relative; */
     /* height: 100%; */
     /* overflow: hidden; */
 }
@@ -15,6 +18,8 @@
 .menuBox {
     background-color: #ffc0cb;
     position: sticky;
+    height: 700px;
+    width: 340px;
 }
 
 .menuHeader {
@@ -65,6 +70,7 @@
     background-color: whitesmoke;
     height: max-content;
     width: 1140px;
+    /* position:fixed; */
 
 }
 
@@ -77,6 +83,7 @@
     display: flex;
     justify-content: space-between;
     overflow: hidden;
+    position: sticky;
 
 
 }
@@ -116,8 +123,9 @@
 
 .bigPicture {
     width: 100%;
-    height: 400px;
+    height: 600px;
     border: 2px solid crimson;
+    background-size: cover;
 
 }
 
