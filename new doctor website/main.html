@@ -13,6 +13,10 @@
         href="  https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> -->
 </head>
 
 <body>
@@ -21,25 +25,27 @@
 
         <!-- navbar -->
         <nav class="navigation">
+            <input type="checkbox"  id="menu-btn" class="menu-btn">
+            <label for="menu-btn" class="menu-icon">
+                <span class="nav-icon"></span>
+            </label>
             <a href="#" class="logo"><span>Health</span> care</a>
             <ul class="menu">
-                <li><a href="#">Find a doctor</a></li>
-                <li><a href="#">our services</a></li>
-                <li><a href="#">Avout us</a></li>
-                <li><a href="#">contact</a></li>
-                <li><a href="#">sd</a></li>
+                <li><a href="#team">Find A Doctor</a></li>
+                <li><a href="#our-services">Our Services</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                
             </ul>
-            <a href="#" class="nav-appointment">Book your apppointement</a>
+            <a href="#" class="nav-appointment">Book An Apppointement</a>
         </nav>
 
 
         <!--  navbar ends here -->
         <div class="hero-box" style="background-image: url(sweets3.jpg);">
             <div class="hero-text">
-                <h1>feel better about finding healthcare</h1>
-                <p> Lorem ipsum dolor sit adipisicing elit. Architecto quod sed suscipit, facere, esse
-                    perferendis saepe amet veniam quis reiciendis voluptatem ullam laborum distinctio soluta fugiat
-                    molestias, adipisci nisi quia!</p>
+                <h1>Feel better about finding healthcare</h1>
+                <p> "Your health journey starts with a click. Don't wait, book your appointment now and take the proactive step towards a healthier you."</p>
+               <p>"The patient-doctor relationship empowers individuals through knowledge, encouraging patients to actively engage in their health decisions and wellness plans."</p>
                 <div class="hero-text-btns">
                     <a href="#">About us</a>
                     <a href="#"><i class="fa-solid fa-magnifying-glass"></i>
@@ -48,7 +54,7 @@
             </div>
             <!--  i can place easily this iamge in div hero-box -->
             <div class="hero-image">
-                <img src="sweet3.jpg" alt="" srcset="" height="300px">
+                <img src="doctor6.jpg" alt="" srcset="" height="300px">
             </div>
         </div>
 
@@ -59,60 +65,52 @@
         <h3>find best healthcare</h3>
     </div> -->
     <!--  what we provide -->
-    <section>
+    <section id="service">
         <div class="service-section">
             <!-- box 1 -->
-            <div class="service-box service-box1">
+            <div class="service-section-box service-section-box1">
                 <!--  icon  -->
 
-                <div class="service-icon">
+                <div class="service-section-icon">
                     <i class="fa-solid fa-capsules"></i>
                 </div>
-                <div class="service-info">
-                    <h1>Specialised service</h1>
-                    <p>Lorem ipsum, dolor sit adipisicing elit. Iste quas sed minus non delectus hic
-                        deserunt ducimus ex iure ipsa?</p>
+                <div class="service-section-info">
+                    <h1>Effiecent Booking</h1>
+                    <p> Experience the ease of scheduling appointments with just a few click. empowers you to take control of your healthcare journey, ensuring prompt access to our expert medical team.</p>
                 </div>
             </div>
             <!-- bpx 2 -->
-            <div class="service-box service-box2">
+            <div class="service-section-box service-section-box2">
                 <!--  icon  -->
 
-                <div class="service-icon">
+                <div class="service-section-icon">
                     <i class="fa-solid fa-capsules"></i>
                 </div>
-                <div class="service-info">
-                    <h1>Specialised service</h1>
-                    <p>Lorem ipsum, dolor sit adipisicing elit. Iste quas sed minus non delectus hic
-                        deserunt ducimus ex iure ipsa?</p>
+                <div class="service-section-info">
+                    <h1>Latest Equipments</h1>
+                    <p>In the dynamic realm of healthcare,  From advanced imaging technologies to robotic-assisted surgical systems, control of your healthcare journey, these cutting-edge tools and efficient medical practices.</p>
                 </div>
             </div>
             <!-- box 3======== -->
-            <div class="service-box service-box3">
+            <div class="service-section-box service-section-box3">
                 <!--  icon  -->
 
-                <div class="service-icon">
+                <div class="service-section-icon">
                     <i class="fa-solid fa-capsules"></i>
                 </div>
-                <div class="service-info">
+                <div class="service-section-info">
                     <h1>Specialised service</h1>
-                    <p>Lorem ipsum, dolor sit adipisicing elit. Iste quas sed minus non delectus hic
-                        deserunt ducimus ex iure ipsa?</p>
+                    <p>Our team of best doctors comprises dedication, prioritize personalized care, ensuring each patientthe highest standard of medical attention. Their expertise extends beyond diagnoses and treatments;</p>
                 </div>
             </div>
         </div>
-
-
-
-
-
 
     </section>
     <!-- Our story -->
     <section id="our-story">
 
         <div class="our-story-img">
-            <img src="sweet2.jpg" alt="">
+            <img src="whychoseus.jpg" alt="">
             <!--  video play button -->
             <a href="#" class="story-play-btn">
                 <i class="fa-solid fa-play"></i>
@@ -124,12 +122,9 @@
         <div class="our-story-text">
             <!-- <h2>Lorem ipsum dolor sit,  adipisicing elit. Ex cumque eveniet quasi quos quis? Neque, perspiciatis corporis! Recusandae, sint voluptatibus?</h2> -->
             <h2>Short - Client reviews</h2>
-            <p>Lorem ipsum dolor sit adipisicing elit. Labore, illo?
-                Lorem ipsum dolor sit adipisicing elit. Quae veritatis necessitatibus, facere similique
-                ea ratione debitis enim laborum ipsam non voluptatem sunt obcaecati maiores beatae doloribus doloremque
-                delectus tempore quam!
+            <p>The patient-doctor relationship is a sacred alliance, grounded in trust, empathy, and shared commitment. It transcends the clinical setting, evolving into a partnership where open communication thrives. In this unique connection, the doctor becomes not only a skilled professional but also a compassionate guide, offering expertise and unwavering support. Patients, in turn, actively participate in their healthcare journey, empowered by knowledge and encouraged to make informed decisions. <br> This relationship is characterized by mutual respect, fostering an environment where both parties listen, understand, and collaborate on personalized treatment plans.
             </p>
-            <p>Lorem ipsum dolor sit, adipisicing elit. Reiciendis, iure!</p>
+            <!-- <p>Lorem ipsum dolor sit, adipisicing elit. Reiciendis, iure!</p> -->
             <!--  happy clinets statisc -->
 
 
@@ -141,24 +136,95 @@
                 </div>
                 <!-- box-2 -->
                 <div class="story-number-box">
-                    <strong>2000+</strong>
-                    <span>Happy patients</span>
+                    <strong>234+</strong>
+                    <span>Succesful operation</span>
                 </div>
                 <!-- box-3-->
                 <div class="story-number-box">
-                    <strong>2000+</strong>
-                    <span>Happy patients</span>
+                    <strong>50+</strong>
+                    <span>Best Doctors</span>
                 </div>
                 <!-- box-4 -->
                 <div class="story-number-box">
-                    <strong>2000+</strong>
-                    <span>Happy patients</span>
+                    <strong>569+</strong>
+                    <span>Positive feedbacks</span>
                 </div>
             </div>
             <!--  container ened here -->
         </div>
         <!--  -->
 
+    </section>
+    <!-- our services -->
+    <section id="our-services">
+        <!-- heading -->
+        <div class="services-heading">
+            <div class="services-heading-text">
+                <strong>Our Services</strong>
+                <h2>High qualitu Services For You</h2>
+            </div>
+            <div class="services-slide-btns">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+            </div>
+        </div>
+        <!-- box creartion for our sevices -->
+        <div class="services-box-container">
+
+            <!-- Swiper -->
+            <div class="swiper mySwiperservices">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="services-box ">
+                            <i class="fa-solid fa-tooth"></i>
+                            <strong>Neurologist</strong>
+                            <p>Neurologists are specialized physicians dedicated to diagnosing and treating disorders of the nervous system. With expertise in conditions such as headaches, epilepsy, and movement disorders, neurologists employ advanced diagnostic techniques to provide accurate assessments. </p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                    <!-- slide end -->
+
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="services-box ">
+                            <i class="fa-solid fa-tooth"></i>
+                            <strong>Cardiologist</strong>
+                            <p>Our cardiologists are dedicated experts specializing in the intricate workings of the heart and cardiovascular system. With extensive training and experience, they skillfully diagnose and treat a range of cardiac conditions, providing personalized care to enhance heart health. At [Hospital/Clinic Name], our cardiologists are committed to ensuring your cardiovascular well-being through state-of-the-art interventions and a patient-centered approach.</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                    <!-- slide end -->
+
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="services-box ">
+                            <i class="fa-solid fa-tooth"></i>
+                            <strong>Deermatologist</strong>
+                            <p>Our dermatologists are skin health experts dedicated to enhancing your confidence and well-being. With specialized knowledge in diagnosing and treating various skin conditions, from acne to skin cancer, they offer personalized care to address your unique skincare needs. Trust our dermatologists to provide expert guidance, helping you achieve and maintain healthy, radiant skin.</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                    <!-- slide end -->
+
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="services-box ">
+                            <i class="fa-solid fa-tooth"></i>
+                            <strong>Dental Care</strong>
+                            <p>Dental care is essential for maintaining oral health and preventing dental problems. Regular brushing, flossing, and routine dental check-ups are crucial for preventing issues such as cavities and gum disease. Timely dental care promotes overall well-being by ensuring a healthy and functional smile.</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                    <!-- slide end -->
+                </div><!--wrapper end-->
+            </div><!--swipper - end  -->
+        </div>
+        <!-- container ends -->
+
+
+        <span class="service-help-btn">Contact us for need any help and services <a href="#">Lets get Started</a></span>
     </section>
     <section id="why-choose-us">
         <div class="why-choose-us-left">
@@ -169,9 +235,9 @@
                     <i class="fa-solid fa-check"></i>
                     <div class="why-choose-box-text">
                         <strong>
-                            Advance care
+                            National and International Recognition
                         </strong>
-                        <p>Lorem ipsum dolor sit !</p>
+                        <p>The hospital is equipped with state-of-the-art medical facilities and technology</p>
                     </div>
                 </div>
 
@@ -182,9 +248,9 @@
                     <i class="fa-solid fa-check"></i>
                     <div class="why-choose-box-text">
                         <strong>
-                            Advance care
+                            Networking and Referrals:
                         </strong>
-                        <p>Lorem ipsum dolor sit !</p>
+                        <p>The hospital is equipped with state-of-the-art medical facilities and technology</p>
                     </div>
                     <!-- </div> -->
 
@@ -196,9 +262,9 @@
                     <i class="fa-solid fa-check"></i>
                     <div class="why-choose-box-text">
                         <strong>
-                            Advance care
+                            Expertise and Specialization
                         </strong>
-                        <p>Lorem ipsum dolor sit !</p>
+                        <p>The hospital is equipped with state-of-the-art medical facilities and technology</p>
                     </div>
                     <!-- </div> -->
 
@@ -209,9 +275,9 @@
                     <i class="fa-solid fa-check"></i>
                     <div class="why-choose-box-text">
                         <strong>
-                            Advance care
+                            Comprehensive Medical Services
                         </strong>
-                        <p>Lorem ipsum dolor sit !</p>
+                        <p>The hospital is equipped with state-of-the-art medical facilities and technology</p>
                     </div>
                 </div>
 
@@ -225,8 +291,8 @@
                 <br>
                 Contact us.
             </h3>
-            <p>Lorem ipsum dolor sit adipisicing elit. Fugit inciferendis vel earum facilis, sapiente
-                consectetur impedit, est accusantium? Vitae et perspiciatis cupiditate expedita.</p>
+            <p>Urgent Care Booking:
+                "Need urgent care? Our online appointment system allows you to quickly book same-day or next-day appointments for immediate attention.".</p>
             <!-- container begins here-->
             <div class="w-right-contact-container">
                 <!-- box -->
@@ -261,18 +327,18 @@
         <!-- container -->
         <div class="team-box-container">
             <!-- Swiper -->
-            <div class="swiper mySwiper">
+            <div class="swiper mySwiperteam">
                 <div class="swiper-wrapper">
                     <!-- slide 1 -->
                     <div class="swiper-slide">
                         <div class="team-box">
                             <div class="team-img">
-                                <img src="sweet2.jpg" alt="" srcset="">
+                                <img src="doctor1.jpg" width="400px" srcset="">
                             </div>
                             <!-- text -->
                             <div class="team-text">
-                                <strong>Dr Arjun Nagpal</strong>
-                                <span>Skin specialist</span>
+                                <strong>Dr Patrix jin</strong>
+                                <span>Cancer Specialist</span>
                             </div>
                         </div>
                     </div>
@@ -281,12 +347,12 @@
                     <div class="swiper-slide">
                         <div class="team-box">
                             <div class="team-img">
-                                <img src="sweet2.jpg" alt="" srcset="">
+                                <img src="doctor3.jpg" width="400px" srcset="">
                             </div>
                             <!-- text -->
                             <div class="team-text">
-                                <strong>Dr Arjun Nagpal</strong>
-                                <span>Skin specialist</span>
+                                <strong>Dr Susane luci</strong>
+                                <span>Heart Specialist</span>
                             </div>
                         </div>
                     </div>
@@ -295,12 +361,12 @@
                     <div class="swiper-slide">
                         <div class="team-box">
                             <div class="team-img">
-                                <img src="sweet2.jpg" alt="" srcset="">
+                                <img src="doctor4.jpg" width="400px" alt="" srcset="">
                             </div>
                             <!-- text -->
                             <div class="team-text">
-                                <strong>Dr Arjun Nagpal</strong>
-                                <span>Skin specialist</span>
+                                <strong>Dr Kevin Brook</strong>
+                                <span>Orthopedic Surgeon</span>
                             </div>
                         </div>
                     </div>
@@ -309,29 +375,47 @@
                     <div class="swiper-slide">
                         <div class="team-box">
                             <div class="team-img">
-                                <img src="sweet2.jpg" alt="" srcset="">
+                                <img src="doctor5.jpg" width="400" srcset="">
                             </div>
                             <!-- text -->
                             <div class="team-text">
-                                <strong>Dr Arjun Nagpal</strong>
-                                <span>Skin specialist</span>
+                                <strong>Dr Aliza Spencer</strong>
+                                <span>Cardiologist</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  Slide ends here -->
+                    <!-- slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="team-box">
+                            <div class="team-img">
+                                <img src="doctor6.jpg" alt="" srcset="">
+                            </div>
+                            <!-- text -->
+                            <div class="team-text">
+                                <strong>Dr Marcus Denil</strong>
+                                <span>Neurologist</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  Slide ends here -->
+                    <!-- slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="team-box">
+                            <div class="team-img">
+                                <img src="doctor2.jpg" alt="" srcset="">
+                            </div>
+                            <!-- text -->
+                            <div class="team-text">
+                                <strong>Dr Jennifer Lewis</strong>
+                                <span>Skin Specialist</span>
                             </div>
                         </div>
                     </div>
                     <!--  Slide ends here -->
                 </div>
             </div>
-            <!-- box -->
-            <div class="team-box">
-                <div class="team-img">
-                    <img src="sweet2.jpg" alt="" srcset="">
-                </div>
-                <!-- text -->
-                <div class="team-text">
-                    <strong>Dr Arjun Nagpal</strong>
-                    <span>Skin specialist</span>
-                </div>
-            </div>
+
         </div>
         <!--  sections ends here -->
     </section>
@@ -344,163 +428,274 @@
         </div> <!-- heading ends here -->
         <div class="testimonials-content">
             <div class="testimonials-img">
-                <img src="sweet2.jpg" alt="">
+                <img src="customer1.png" alt="">
             </div>
             <!-- container -->
             <div class="testimonials-box-container">
+                <!-- Swiper -->
+                <div class="swiper mySwipertesti">
+                    <div class="swiper-wrapper">
+                        <!-- slide 1 begins here -->
+                        <div class="swiper-slide">
+                            <!-- Box - -->
+                            <div class="testimonials-box">
+                                <div class="t-profile">
+                                    <div class="t-profile-img">
+                                        <img src="person1.jpg" alt="">
+                                    </div>
+                                    <div class="t-profile-text">
+                                        <strong>Daniel bluf</strong>
+                                        <span>From London</span>
+                                        <div class="t-rating">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div> <!--t-profile box ends here-->
+                                <!--  feedback -->
+                                <p>I recently had a surgical procedure at , and I cannot express enough gratitude for the exceptional care I received. The medical staff was not only highly skilled but also compassionate and attentive. The facilities were clean, and the entire process was well-organized. Thank you, , for making a challenging time more manageable through your outstanding service</p>
+                            </div>
+                        </div>
+                        <!-- slide 1 ends here -->
+                        <!-- slide 1 begins here -->
+                        <div class="swiper-slide">
+                            <!-- Box - -->
+                            <div class="testimonials-box">
+                                <div class="t-profile">
+                                    <div class="t-profile-img">
+                                        <img src="person2.jpg" alt="">
+                                    </div>
+                                    <div class="t-profile-text">
+                                        <strong>Aura Patrik</strong>
+                                        <span>From Paris</span>
+                                        <div class="t-rating">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div> <!--t-profile box ends here-->
+                                <!--  feedback -->
+                                <p>"While the medical care at [Hospital Name] was excellent, I did experience some delays in receiving information about my treatment plan. Improved communication regarding the process and expected timelines would have eased my anxiety. Nonetheless, I appreciate the expertise of the medical team and the overall quality of care provided."</p>
+                            </div>
+                        </div>
+                        <!-- slide 1 ends here -->
+                        <!-- slide 1 begins here -->
+                        <div class="swiper-slide">
+                            <!-- Box - -->
+                            <div class="testimonials-box">
+                                <div class="t-profile">
+                                    <div class="t-profile-img">
+                                        <img src="person3.jpg" alt="" >
+                                    </div>
+                                    <div class="t-profile-text">
+                                        <strong>Leonardo Vinci</strong>
+                                        <span>From Italy</span>
+                                        <div class="t-rating">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div> <!--t-profile box ends here-->
+                                <!--  feedback -->
+                                <p>"I recently visited the emergency department with a family member, and I am incredibly impressed by the efficiency and professionalism of the staff. Despite a busy night, the nurses and doctors took the time to explain each step of the process and made us feel well-cared-for. The prompt attention and compassionate approach significantly eased our worries. Thank you for the top-notch service."</p>
+                            </div>
+                        </div>
+                        <!-- slide 1 ends here -->
+                        <!-- slide 1 begins here -->
+                        <div class="swiper-slide">
+                            <!-- Box - -->
+                            <div class="testimonials-box">
+                                <div class="t-profile">
+                                    <div class="t-profile-img">
+                                        <img src="person4.jpg" alt="">
+                                    </div>
+                                    <div class="t-profile-text">
+                                        <strong>Naveen Gupta</strong>
+                                        <span>From India</span>
+                                        <div class="t-rating">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div> <!--t-profile box ends here-->
+                                <!--  feedback -->
+                                <p>"I had the privilege of being treated by Dr. Lewis Bens, recently, and I am impressed by their exceptional bedside manner and thorough approach to my health concerns. Dr. Lewis Bens, not only demonstrated a deep understanding of my medical condition but also actively involved me in the decision-making process. I feel confident and well-cared-for under their guidance."</p>
+                            </div>
+                        </div>
+                        <!-- slide 1 ends here -->
+                         <!-- slide 1 begins here -->
+                         <div class="swiper-slide">
+                            <!-- Box - -->
+                            <div class="testimonials-box">
+                                <div class="t-profile">
+                                    <div class="t-profile-img">
+                                        <img src="person5.jpg" alt="">
+                                    </div>
+                                    <div class="t-profile-text">
+                                        <strong>Abhishek Malhan</strong>
+                                        <span>From Thailand</span>
+                                        <div class="t-rating">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div> <!--t-profile box ends here-->
+                                <!--  feedback -->
+                                <p>"I want to express my gratitude to Dr.Naryn Murti, for the exceptional care I received. Their attentiveness, compassion, and willingness to explore various treatment options made a significant difference in my recovery. Dr. [Doctor's Name] goes above and beyond to ensure their patients receive not only the best medical care but also the support needed for a positive health outcome."
 
-                <div class="swiper mySwiper">
-                    <div class="swipper-wrapper">
-                        <!-- slide 1 -->
-                        <div class="swipper-slide">
-                            <!-- Box - -->
-                            <div class="testimonials-box">
-                                <div class="t-profile">
-                                    <div class="t-profile-img">
-                                        <img src="sweet2.jpg" alt="">
-                                    </div>
-                                    <div class="t-profile-text">
-                                        <strong>Client Name</strong>
-                                        <span>From China</span>
-                                        <div class="t-rating">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div> <!--t-profile box ends here-->
-                                <!--  feedback -->
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi impedit autem
-                                    Eius provident ratione, placeat ad ipsa minus facere veniam et aliquam earum harum
-                                    libero corrupti
-                                    tempore esse.</p>
+
+
+
+
+                                </p>
                             </div>
                         </div>
-                        <!-- ends here slide 1 -->
-                        <!-- slide 1 -->
-                        <div class="swipper-slide">
-                            <!-- Box - -->
-                            <div class="testimonials-box">
-                                <div class="t-profile">
-                                    <div class="t-profile-img">
-                                        <img src="sweet2.jpg" alt="">
-                                    </div>
-                                    <div class="t-profile-text">
-                                        <strong>Client Name</strong>
-                                        <span>From China</span>
-                                        <div class="t-rating">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div> <!--t-profile box ends here-->
-                                <!--  feedback -->
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi impedit autem
-                                    Eius provident ratione, placeat ad ipsa minus facere veniam et aliquam earum harum
-                                    libero corrupti
-                                    tempore esse.</p>
-                            </div>
-                        </div>
-                        <!-- ends here slide 1 -->
-                        <!-- slide 1 -->
-                        <div class="swipper-slide">
-                            <!-- Box - -->
-                            <div class="testimonials-box">
-                                <div class="t-profile">
-                                    <div class="t-profile-img">
-                                        <img src="sweet2.jpg" alt="">
-                                    </div>
-                                    <div class="t-profile-text">
-                                        <strong>Client Name</strong>
-                                        <span>From China</span>
-                                        <div class="t-rating">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div> <!--t-profile box ends here-->
-                                <!--  feedback -->
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi impedit autem
-                                    Eius provident ratione, placeat ad ipsa minus facere veniam et aliquam earum harum
-                                    libero corrupti
-                                    tempore esse.</p>
-                            </div>
-                        </div>
-                        <!-- ends here slide 1 -->
-                        <!-- slide 1 -->
-                        <div class="swipper-slide">
-                            <!-- Box - -->
-                            <div class="testimonials-box">
-                                <div class="t-profile">
-                                    <div class="t-profile-img">
-                                        <img src="sweet2.jpg" alt="">
-                                    </div>
-                                    <div class="t-profile-text">
-                                        <strong>Client Name</strong>
-                                        <span>From China</span>
-                                        <div class="t-rating">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div> <!--t-profile box ends here-->
-                                <!--  feedback -->
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi impedit autem
-                                    Eius provident ratione, placeat ad ipsa minus facere veniam et aliquam earum harum
-                                    libero corrupti
-                                    tempore esse.</p>
-                            </div>
-                        </div>
-                        <!-- ends here slide 1 -->
-                        <!-- slide 1 -->
-                        <div class="swipper-slide">
-                            <!-- Box - -->
-                            <div class="testimonials-box">
-                                <div class="t-profile">
-                                    <div class="t-profile-img">
-                                        <img src="sweet2.jpg" alt="">
-                                    </div>
-                                    <div class="t-profile-text">
-                                        <strong>Client Name</strong>
-                                        <span>From China</span>
-                                        <div class="t-rating">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div> <!--t-profile box ends here-->
-                                <!--  feedback -->
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi impedit autem
-                                    Eius provident ratione, placeat ad ipsa minus facere veniam et aliquam earum harum
-                                    libero corrupti
-                                    tempore esse.</p>
-                            </div>
-                        </div>
-                        <!-- ends here slide 1 -->
+                        <!-- slide 1 ends here -->
                     </div>
-                    <div class="swipper-pagination">
-                    </div>
-                </div><!--swipper ends-->
+                    <div class="swiper-pagination"></div>
+                </div>
+
             </div><!--container ends-->
         </div><!--content ends-->
     </section><!--sections end here-->
 
 
+    <!-- footer section -->
+    <footer>
+        <div class="footer-container">
+            <!-- <div class="footer-box"> -->
+            <div class="footer-company-box">
+                <a href="#" class="logo"><span>Health</span>Care</a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitentium corrupti voluptatem perferendis
+                    quibusdam obcaecati, aliquam modi! Expedita illo dolor temporibus.</p>
+                <!-- </div> -->
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div><!--company box ends here-->
+            <div class="footer-link-box">
+                <strong>Main Link's</strong>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                </ul>
+            </div>
+          
+            <div class="footer-link-box">
+                <strong>Our Policies</strong>
+                <ul>
+                    <li><a href="#">Terms and Conditons</a></li>
+                    <li><a href="#">Privacy ploicy</a></li>
+                    <li><a href="#">Fees and Payment Policy</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Cancellation Policy</a></li>
+                </ul>
+            </div>
+           
+            <div class="footer-link-box">
+                <strong>Others</strong>
+                <ul>
+                    <li><a href="#">Browse Doctors</a></li>
+                    <li><a href="#">Browse Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Health Articles</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+        </div><!--Container ends here-->
+        <div class="footer-end-name" style="display: flex; justify-content: right; margin-right: 40px; ">
+            <span style="font-size: large;">Made By - Aryan Rastogi</span>
+        </div>
+    </footer>
 
+
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiperservices", {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 40,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
+        });
+        var swiper = new Swiper(".mySwiperteam", {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 40,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 50,
+                },
+            },
+        });
+
+        var swiper = new Swiper(".mySwipertesti", {
+            pagination: {
+                el: ".swiper-pagination",
+            },
+        });
+    </script>
 </body>
 
 </html>
