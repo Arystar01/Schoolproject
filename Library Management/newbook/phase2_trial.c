@@ -333,8 +333,8 @@ struct book *change_book(struct book *first_book, int item_id)
                 char name12[200];
                 // scanf("%s", name12);
                 getchar();
-                fgets(name12,sizeof(name12),stdin);
-                name12[strcspn(name12,"\n")]= '\0';
+                fgets(name12, sizeof(name12), stdin);
+                name12[strcspn(name12, "\n")] = '\0';
                 //    t->book_name=name;
                 strcpy(t->book_name, name12);
                 break;
@@ -344,8 +344,8 @@ struct book *change_book(struct book *first_book, int item_id)
                 char author12[200];
                 // scanf("%s", author12);
                 getchar();
-                fgets(author12,sizeof(author12),stdin);
-                author12[strcspn(author12,"\n")]= '\0';
+                fgets(author12, sizeof(author12), stdin);
+                author12[strcspn(author12, "\n")] = '\0';
                 strcpy(t->book_author, author12);
                 break;
             case 3:
@@ -455,8 +455,8 @@ struct issue *create_issue(struct issue *second_issue)
     char issue_username1[100];
     printf("Enter the student username-: ");
     getchar();
-    fgets(issue_username1,sizeof(issue_username1),stdin);
-    issue_username1[strcspn(issue_username1,"\n")]= '\0';
+    fgets(issue_username1, sizeof(issue_username1), stdin);
+    issue_username1[strcspn(issue_username1, "\n")] = '\0';
     // scanf("%s", issue_username1);
     struct student *ptr = (struct student *)malloc(sizeof(struct student));
     ptr = student1;
@@ -494,8 +494,8 @@ struct issue *create_issue(struct issue *second_issue)
             char issue_date1[10];
             printf("Enter the date-: ");
             getchar();
-            fgets(issue_date1,sizeof(issue_date1),stdin);
-           issue_date1[strcspn(issue_date1,"\n")]= '\0';
+            fgets(issue_date1, sizeof(issue_date1), stdin);
+            issue_date1[strcspn(issue_date1, "\n")] = '\0';
             // scanf("%s", issue_date1);
             strcpy(new_issue->issue_date, issue_date1);
             //  reducing a book quantity by 1 as , on issueing book the no of book would be reduced
@@ -616,10 +616,10 @@ struct return_book *create_return_book(struct return_book *second_return_book)
     char return_book_username1[100];
     printf("Enter the issue username-: ");
     // scanf("%s", return_book_username1);
-    
-getchar();
-fgets(return_book_username1, sizeof(return_book_username1), stdin);
-return_book_username1[strcspn(return_book_username1, "\n")] = '\0';
+
+    getchar();
+    fgets(return_book_username1, sizeof(return_book_username1), stdin);
+    return_book_username1[strcspn(return_book_username1, "\n")] = '\0';
     struct issue *ptr = (struct issue *)malloc(sizeof(struct issue));
     ptr = first_issue;
     while (ptr->issue_username != return_book_username1 && ptr != NULL)
@@ -641,11 +641,10 @@ return_book_username1[strcspn(return_book_username1, "\n")] = '\0';
             char return_book_date1[10];
             printf("Enter the date-: ");
             // scanf("%s", return_book_date1);
-            
 
-getchar();
-fgets(return_book_date1, sizeof(return_book_date1), stdin);
-return_book_date1[strcspn(return_book_date1, "\n")] = '\0';
+            getchar();
+            fgets(return_book_date1, sizeof(return_book_date1), stdin);
+            return_book_date1[strcspn(return_book_date1, "\n")] = '\0';
             strcpy(new_return_book->return_book_author, ptr->issue_book_author);
             strcpy(new_return_book->return_book_name, ptr->issue_book_name);
             new_return_book->return_book_price = ptr->issue_book_price;
@@ -740,16 +739,16 @@ struct staff1 *insert_staff(struct staff1 *head1)
     printf("Enter your username: ");
     // scanf("%s", username1);
     getchar();
-fgets(username1, sizeof(username1), stdin);
-username1[strcspn(username1, "\n")] = '\0';
+    fgets(username1, sizeof(username1), stdin);
+    username1[strcspn(username1, "\n")] = '\0';
     strcpy(ptr->username, username1);
     char password1[100];
     printf("Enter your password : ");
     // scanf("%s", password1);
-    
-getchar();
-fgets(password1, sizeof(password1), stdin);
-password1[strcspn(password1, "\n")] = '\0';
+
+    getchar();
+    fgets(password1, sizeof(password1), stdin);
+    password1[strcspn(password1, "\n")] = '\0';
     strcpy(ptr->password, password1);
     ptr->next = NULL;
     struct staff1 *temp = (struct staff1 *)malloc(sizeof(struct staff1));
@@ -785,10 +784,10 @@ struct staff1 *delete_staff1(struct staff1 *head1)
     char name_to_delete[100];
     printf("Enter the name of user to be deleted-: ");
     // scanf("%s", name_To_delete);
-    
-getchar();
-fgets(name_to_delete, sizeof(name_to_delete), stdin);
-name_to_delete[strcspn(name_to_delete, "\n")] = '\0';
+
+    getchar();
+    fgets(name_to_delete, sizeof(name_to_delete), stdin);
+    name_to_delete[strcspn(name_to_delete, "\n")] = '\0';
     int result64 = strcmp(temp->username, name_to_delete);
     while (result64 != 0 && temp != NULL)
     {
@@ -907,19 +906,19 @@ struct request_book *create_request_book(struct request_book *trial_request_book
     printf("ENTER THE NAME OF BOOK FOR REQUEST-: ");
     char request_bookname11[100];
     // scanf("%s", request_bookname11);
-    
-getchar();
-fgets(request_bookname11, sizeof(request_bookname11), stdin);
-request_bookname11[strcspn(request_bookname11, "\n")] = '\0';
+
+    getchar();
+    fgets(request_bookname11, sizeof(request_bookname11), stdin);
+    request_bookname11[strcspn(request_bookname11, "\n")] = '\0';
 
     strcpy(new_request_book->request_book_name, request_bookname11);
     printf("ENTER THE AUTHOR OF THE BOOK-: ");
     char request_bookauthor11[100];
     // scanf("%s", request_bookauthor11);
-    
-getchar();
-fgets(request_bookauthor11, sizeof(request_bookauthor11), stdin);
-request_bookauthor11[strcspn(request_bookauthor11, "\n")] = '\0';
+
+    getchar();
+    fgets(request_bookauthor11, sizeof(request_bookauthor11), stdin);
+    request_bookauthor11[strcspn(request_bookauthor11, "\n")] = '\0';
     strcpy(new_request_book->request_book_author, request_bookauthor11);
     printf("ENTER THE YEAR OF BOOK-: ");
     scanf("%d", &new_request_book->request_book_year);
@@ -1279,8 +1278,8 @@ void choose_staff_type_login()
 
             break;
         case 10:
-        choice2=0;
-        break;    
+            choice2 = 0;
+            break;
         default:
             printf("Please choose one of the above only.\n");
             choice2 = 2;
@@ -1425,8 +1424,8 @@ void choose_student_type_login()
 
             break;
         case 10:
-        choice_choose_student_type_login=0;
-        break;    
+            choice_choose_student_type_login = 0;
+            break;
         default:
 
             break;
@@ -1460,8 +1459,8 @@ void choose_type_login()
             // choice_choose_type_login = 0;
             break;
         case 10:
-        choice_choose_type_login=0;
-        break;
+            choice_choose_type_login = 0;
+            break;
         default:
             printf("PLEASE CHOOSE ABOVE ONE ONLY.. \n");
             break;
@@ -1469,12 +1468,13 @@ void choose_type_login()
     } while (choice_choose_type_login != 0);
     printf("SYSTEM SHUTTING DOWN...............\n");
 }
-void allinitialize(){
-// initialize the list of the student.
+void allinitialize()
+{
+    // initialize the list of the student.
     // initialize_student_list(trial_student);
     //  dont worry about this error it is because of not linking
     initialize_lib(first_book);
-     initialize_student_list(student1);
+    initialize_student_list(student1);
     initialize_request_book(first_request_book);
     // initialize_lib(first_book);
 }
