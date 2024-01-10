@@ -120,7 +120,7 @@ struct student *initialize_student_list(struct student *trial_student);
 struct book *search_book_by_bookid(int item, struct book *first_book);
 void display_student_all_functions(struct student *trial_student);
 void choose_student_type_login();
-
+void allinitialize();
 //  initiali\ze book list
 struct book *initialize_lib(struct book *trial_book)
 {
@@ -1182,6 +1182,7 @@ void choose_staff_type_login()
     printf("\n \n \n");
     printf("                                   CHOOSE THE DESIGNATION FOR LOGIN                                                         \n");
     printf(" 1. As a Supervisor                                                                         2. As a Library head            \n");
+    printf("Enter 10 to move back.\n");
     int choice2 = 1;
     do
     {
@@ -1241,7 +1242,7 @@ void choose_staff_type_login()
 
             } while (abcd != 0);
 
-            choice2 = 0;
+            // choice2 = 0;
             break;
         case 2:
             //  here no need to initialize any list
@@ -1274,10 +1275,12 @@ void choose_staff_type_login()
 
             } while (aaad != 0);
 
-            choice2 = 0;
+            // choice2 = 0;
 
             break;
-
+        case 10:
+        choice2=0;
+        break;    
         default:
             printf("Please choose one of the above only.\n");
             choice2 = 2;
@@ -1378,6 +1381,7 @@ void choose_student_type_login()
     {
         printf("              CHOOSE THE MODE OF LOGIN                 \n\n");
         printf("1. AS A NEW STUDENT                 2. LOGIN AS A STUDENT \n\n");
+        printf("Enter 10 to move back.\n");
         printf("ENTER YOUR CHOICE-: ");
         int choice_abcd;
         scanf("%d", &choice_abcd);
@@ -1385,7 +1389,7 @@ void choose_student_type_login()
         {
         case 1:
 
-            choice_choose_student_type_login = 0;
+            // choice_choose_student_type_login = 0;
             break;
         case 2:
             printf("ENTER YOUR USERNAME-: ");
@@ -1411,7 +1415,7 @@ void choose_student_type_login()
                 printf("CONGRATS , YOU ARE A VALID STUDENT USER.....\n");
                 display_student_all_functions(temp);
 
-                choice_choose_student_type_login = 0;
+                // choice_choose_student_type_login = 0;
             }
             else
             {
@@ -1420,6 +1424,9 @@ void choose_student_type_login()
             }
 
             break;
+        case 10:
+        choice_choose_student_type_login=0;
+        break;    
         default:
 
             break;
@@ -1435,6 +1442,7 @@ void choose_type_login()
     {
         printf("PLEASE CHOOSE LOGIN TYPE \n");
         printf("1.As a student                   2.As a library staff\n");
+        printf("Enter 10 to move back.\n");
 
         int choice_a1;
         scanf("%d", &choice_a1);
@@ -1443,22 +1451,33 @@ void choose_type_login()
         case 1:
             //  open the student login page
             choose_student_type_login();
-            choice_choose_type_login = 0;
+            // choice_choose_type_login = 0;
             break;
         case 2:
             //  open the staff login page . ie file name login1.c
             choose_staff_type_login();
 
-            choice_choose_type_login = 0;
+            // choice_choose_type_login = 0;
             break;
-
+        case 10:
+        choice_choose_type_login=0;
+        break;
         default:
             printf("PLEASE CHOOSE ABOVE ONE ONLY.. \n");
             break;
         }
     } while (choice_choose_type_login != 0);
+    printf("SYSTEM SHUTTING DOWN...............\n");
 }
-
+void allinitialize(){
+// initialize the list of the student.
+    // initialize_student_list(trial_student);
+    //  dont worry about this error it is because of not linking
+    initialize_lib(first_book);
+     initialize_student_list(student1);
+    initialize_request_book(first_request_book);
+    // initialize_lib(first_book);
+}
 int main()
 {
 

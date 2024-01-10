@@ -170,6 +170,10 @@ struct book *add_new_book(struct book *first_book)
 }
 
 int main(){
-    add_new_book(first_book);
+    // add_new_book(first_book);
+    FILE*p=fopen("book.txt","a");
+    fprintf(p,"hi everu]");
+    fclose(p);
+
     return 0;
 }
