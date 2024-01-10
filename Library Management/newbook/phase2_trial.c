@@ -39,7 +39,6 @@ struct issue
     struct issue *next;
 };
 
-
 struct staff1
 {
 
@@ -167,12 +166,17 @@ struct book *create_book(struct book *trial_book)
     printf("Enter the id of the book.\n");
     scanf("%d", &new_book->book_id);
     printf("Enter the name of the book .\n");
-    scanf("%s", new_book->book_name);
-    //     fgets(new_book->book_name, sizeof(new_book->book_name), stdin);
-    // Remove the newline character at the end if present
-    // new_book->book_name[strcspn(new_book->book_name, "\n")] = '\0';
+    // sscanf("%s", new_book->book_name);
+    // gets(new_book->book_name);
+    getchar();
+    fgets(new_book->book_name, sizeof(new_book->book_name), stdin);
+
+    new_book->book_name[strcspn(new_book->book_name, "\n")] = '\0';
     printf("Enter the name of the author of the book. \n");
-    scanf("%s", new_book->book_author);
+    getchar();
+    fgets(new_book->book_author, sizeof(new_book->book_author), stdin);
+
+    new_book->book_author[strcspn(new_book->book_author, "\n")] = '\0';
     printf("Enter the year of the book. \n");
     scanf("%d", &new_book->book_year);
     printf("Enter the price of the book.\n");
@@ -327,7 +331,10 @@ struct book *change_book(struct book *first_book, int item_id)
                 printf("Current name of the book is %s", t->book_name);
                 printf("Enter new name of the book. \n");
                 char name12[200];
-                scanf("%s", name12);
+                // scanf("%s", name12);
+                getchar();
+                fgets(name12,sizeof(name12),stdin);
+                name12[strcspn(name12,"\n")]= '\0';
                 //    t->book_name=name;
                 strcpy(t->book_name, name12);
                 break;
@@ -335,7 +342,10 @@ struct book *change_book(struct book *first_book, int item_id)
                 printf("Current name of the author is %s .\n", t->book_author);
                 printf("Enter the new name of the author. \n");
                 char author12[200];
-                scanf("%s", author12);
+                // scanf("%s", author12);
+                getchar();
+                fgets(author12,sizeof(author12),stdin);
+                author12[strcspn(author12,"\n")]= '\0';
                 strcpy(t->book_author, author12);
                 break;
             case 3:
@@ -444,7 +454,10 @@ struct issue *create_issue(struct issue *second_issue)
     }
     char issue_username1[100];
     printf("Enter the student username-: ");
-    scanf("%s", issue_username1);
+    getchar();
+    fgets(issue_username1,sizeof(issue_username1),stdin);
+    issue_username1[strcspn(issue_username1,"\n")]= '\0';
+    // scanf("%s", issue_username1);
     struct student *ptr = (struct student *)malloc(sizeof(struct student));
     ptr = student1;
 
@@ -480,7 +493,10 @@ struct issue *create_issue(struct issue *second_issue)
             new_issue->issue_book_year = new_book->book_year;
             char issue_date1[10];
             printf("Enter the date-: ");
-            scanf("%s", issue_date1);
+            getchar();
+            fgets(issue_date1,sizeof(issue_date1),stdin);
+           issue_date1[strcspn(issue_date1,"\n")]= '\0';
+            // scanf("%s", issue_date1);
             strcpy(new_issue->issue_date, issue_date1);
             //  reducing a book quantity by 1 as , on issueing book the no of book would be reduced
             new_book->book_quantity = new_book->book_quantity - 1;
@@ -599,7 +615,11 @@ struct return_book *create_return_book(struct return_book *second_return_book)
     }
     char return_book_username1[100];
     printf("Enter the issue username-: ");
-    scanf("%s", return_book_username1);
+    // scanf("%s", return_book_username1);
+    
+getchar();
+fgets(return_book_username1, sizeof(return_book_username1), stdin);
+return_book_username1[strcspn(return_book_username1, "\n")] = '\0';
     struct issue *ptr = (struct issue *)malloc(sizeof(struct issue));
     ptr = first_issue;
     while (ptr->issue_username != return_book_username1 && ptr != NULL)
@@ -620,7 +640,12 @@ struct return_book *create_return_book(struct return_book *second_return_book)
             printf("VALID BOOK ID........\n");
             char return_book_date1[10];
             printf("Enter the date-: ");
-            scanf("%s", return_book_date1);
+            // scanf("%s", return_book_date1);
+            
+
+getchar();
+fgets(return_book_date1, sizeof(return_book_date1), stdin);
+return_book_date1[strcspn(return_book_date1, "\n")] = '\0';
             strcpy(new_return_book->return_book_author, ptr->issue_book_author);
             strcpy(new_return_book->return_book_name, ptr->issue_book_name);
             new_return_book->return_book_price = ptr->issue_book_price;
@@ -713,11 +738,18 @@ struct staff1 *insert_staff(struct staff1 *head1)
     }
     char username1[100];
     printf("Enter your username: ");
-    scanf("%s", username1);
+    // scanf("%s", username1);
+    getchar();
+fgets(username1, sizeof(username1), stdin);
+username1[strcspn(username1, "\n")] = '\0';
     strcpy(ptr->username, username1);
     char password1[100];
     printf("Enter your password : ");
-    scanf("%s", password1);
+    // scanf("%s", password1);
+    
+getchar();
+fgets(password1, sizeof(password1), stdin);
+password1[strcspn(password1, "\n")] = '\0';
     strcpy(ptr->password, password1);
     ptr->next = NULL;
     struct staff1 *temp = (struct staff1 *)malloc(sizeof(struct staff1));
@@ -750,15 +782,19 @@ struct staff1 *delete_staff1(struct staff1 *head1)
     struct staff1 *ptr = (struct staff1 *)malloc(sizeof(struct staff1));
     ptr = NULL;
     temp = head1;
-    char name_To_delete[100];
+    char name_to_delete[100];
     printf("Enter the name of user to be deleted-: ");
-    scanf("%s", name_To_delete);
-    int result64 = strcmp(temp->username, name_To_delete);
+    // scanf("%s", name_To_delete);
+    
+getchar();
+fgets(name_to_delete, sizeof(name_to_delete), stdin);
+name_to_delete[strcspn(name_to_delete, "\n")] = '\0';
+    int result64 = strcmp(temp->username, name_to_delete);
     while (result64 != 0 && temp != NULL)
     {
         ptr = temp;
         temp = temp->next;
-        result64 = strcmp(temp->username, name_To_delete);
+        result64 = strcmp(temp->username, name_to_delete);
     }
     if (result64 == 0)
     {
@@ -870,11 +906,20 @@ struct request_book *create_request_book(struct request_book *trial_request_book
     }
     printf("ENTER THE NAME OF BOOK FOR REQUEST-: ");
     char request_bookname11[100];
-    scanf("%s", request_bookname11);
+    // scanf("%s", request_bookname11);
+    
+getchar();
+fgets(request_bookname11, sizeof(request_bookname11), stdin);
+request_bookname11[strcspn(request_bookname11, "\n")] = '\0';
+
     strcpy(new_request_book->request_book_name, request_bookname11);
     printf("ENTER THE AUTHOR OF THE BOOK-: ");
     char request_bookauthor11[100];
-    scanf("%s", request_bookauthor11);
+    // scanf("%s", request_bookauthor11);
+    
+getchar();
+fgets(request_bookauthor11, sizeof(request_bookauthor11), stdin);
+request_bookauthor11[strcspn(request_bookauthor11, "\n")] = '\0';
     strcpy(new_request_book->request_book_author, request_bookauthor11);
     printf("ENTER THE YEAR OF BOOK-: ");
     scanf("%d", &new_request_book->request_book_year);
@@ -1152,17 +1197,19 @@ void choose_staff_type_login()
         case 1:
             //  initialize the list of the staff members
             initialize_staff1(head1);
+            initialize_student_list(student1);
+            initialize_issue_books(second_issue);
             do
             {
-// int buffersize=100;
+                // int buffersize=100;
                 printf("ENTER STAFF USERNAME -: ");
                 char user_name1[200];
-            //    fgets(user_name1,buffersize,stdin);
+                //    fgets(user_name1,buffersize,stdin);
                 scanf("%s", user_name1);
-//             printf("ENTER STAFF USERNAME -: ");
-// char user_name1[200];
-// fgets(user_name1, sizeof(user_name1), stdin);
-// user_name1[strcspn(user_name1, "\n")] = '\0';
+                //             printf("ENTER STAFF USERNAME -: ");
+                // char user_name1[200];
+                // fgets(user_name1, sizeof(user_name1), stdin);
+                // user_name1[strcspn(user_name1, "\n")] = '\0';
                 printf("ENTER STAFF PASSWORD -: ");
                 char user_password1[20];
                 scanf("%s", user_password1);
