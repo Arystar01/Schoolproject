@@ -4,6 +4,7 @@
 #include <string.h>
 // #include <conio.h>
 #include <stdlib.h>
+// #include "book.h"
 // #include "trial_book_storage.h"
 // #include "trial_issue.h"
 // #include "trial_library.h"
@@ -124,7 +125,7 @@ void allinitialize();
 //  initiali\ze book list
 struct book *initialize_lib(struct book *trial_book)
 {
-    struct book *ptr, *new_book1, *new_book2, *new_book3, *new_book4, *new_book5;
+    struct book *ptr, *new_book1, *new_book2;
 
     new_book1 = (struct book *)malloc(sizeof(struct book));
     new_book1->next = NULL;
@@ -147,8 +148,110 @@ struct book *initialize_lib(struct book *trial_book)
     new_book2->book_price = 2334.34;
     new_book2->book_quantity = 10;
     ptr->next = new_book2;
-    // ptr = new_book2;
-    // free(ptr);
+
+    // Book 3 (Science)
+    struct book *new_book3 = (struct book *)malloc(sizeof(struct book));
+    new_book3->next = NULL;
+
+    new_book3->book_id = 3456;
+    strcpy(new_book3->book_name, "Introduction to Programming");
+    strcpy(new_book3->book_author, "John Doe");
+    new_book3->book_year = 2023;
+    new_book3->book_price = 45.99;
+    new_book3->book_quantity = 15;
+    ptr->next = new_book3;
+    ptr = new_book3;
+
+    // Book 4 (Comic)
+    struct book *new_book4 = (struct book *)malloc(sizeof(struct book));
+    new_book4->next = NULL;
+
+    new_book4->book_id = 4567;
+    strcpy(new_book4->book_name, "The Amazing Adventures");
+    strcpy(new_book4->book_author, "Comic Author");
+    new_book4->book_year = 2022;
+    new_book4->book_price = 19.99;
+    new_book4->book_quantity = 25;
+    ptr->next = new_book4;
+    ptr = new_book4;
+
+    // Book 5 (Comic)
+    struct book *new_book5 = (struct book *)malloc(sizeof(struct book));
+    new_book5->next = NULL;
+
+    new_book5->book_id = 5678;
+    strcpy(new_book5->book_name, "Superhero Chronicles");
+    strcpy(new_book5->book_author, "Graphic Novelist");
+    new_book5->book_year = 2023;
+    new_book5->book_price = 29.99;
+    new_book5->book_quantity = 30;
+    ptr->next = new_book5;
+    ptr = new_book5;
+
+    // Book 6 (Horror)
+    struct book *new_book6 = (struct book *)malloc(sizeof(struct book));
+    new_book6->next = NULL;
+
+    new_book6->book_id = 6789;
+    strcpy(new_book6->book_name, "Haunted Mansion");
+    strcpy(new_book6->book_author, "Scary Author");
+    new_book6->book_year = 2024;
+    new_book6->book_price = 39.99;
+    new_book6->book_quantity = 15;
+    ptr->next = new_book6;
+    ptr = new_book6;
+
+    // Book 7 (Horror)
+    struct book *new_book7 = (struct book *)malloc(sizeof(struct book));
+    new_book7->next = NULL;
+
+    new_book7->book_id = 7890;
+    strcpy(new_book7->book_name, "Dark Shadows");
+    strcpy(new_book7->book_author, "Fearful Writer");
+    new_book7->book_year = 2023;
+    new_book7->book_price = 34.99;
+    new_book7->book_quantity = 20;
+    ptr->next = new_book7;
+    ptr = new_book7;
+
+    // Book 8 (Science)
+    struct book *new_book8 = (struct book *)malloc(sizeof(struct book));
+    new_book8->next = NULL;
+
+    new_book8->book_id = 8901;
+    strcpy(new_book8->book_name, "Quantum Physics Explained");
+    strcpy(new_book8->book_author, "Scientist");
+    new_book8->book_year = 2024;
+    new_book8->book_price = 55.99;
+    new_book8->book_quantity = 12;
+    ptr->next = new_book8;
+    ptr = new_book8;
+
+    // Book 9 (Comic)
+    struct book *new_book9 = (struct book *)malloc(sizeof(struct book));
+    new_book9->next = NULL;
+
+    new_book9->book_id = 9012;
+    strcpy(new_book9->book_name, "Fantasy Adventure");
+    strcpy(new_book9->book_author, "Imaginative Author");
+    new_book9->book_year = 2025;
+    new_book9->book_price = 24.99;
+    new_book9->book_quantity = 18;
+    ptr->next = new_book9;
+    ptr = new_book9;
+
+    // Book 10 (Horror)
+    struct book *new_book10 = (struct book *)malloc(sizeof(struct book));
+    new_book10->next = NULL;
+
+    new_book10->book_id = 1011;
+    strcpy(new_book10->book_name, "Chilling Tales");
+    strcpy(new_book10->book_author, "Ghostly Writer");
+    new_book10->book_year = 2024;
+    new_book10->book_price = 38.99;
+    new_book10->book_quantity = 22;
+    ptr->next = new_book10;
+
     return first_book;
 }
 
@@ -185,6 +288,15 @@ struct book *create_book(struct book *trial_book)
     scanf("%d", &new_book->book_quantity);
     printf("Thank you ............");
     new_book->next = NULL;
+    FILE *f = fopen("book.txt", "a");
+    if (f == NULL)
+    {
+        printf("Error opening the file.\n");
+        free(new_book); // Free allocated memory before returning
+        return NULL;
+    }
+    fprintf(f, "Book ID- %d \nBook Name - %s \n Book Authour-%s \n Book Year- %d \n Book Price -%f \n Book Quantity - %d \n", new_book->book_id, new_book->book_name, new_book->book_author, new_book->book_year, new_book->book_price, new_book->book_quantity);
+    fclose(f);
     return new_book;
 }
 //  creating a add new book
@@ -408,18 +520,19 @@ void display_book_details(struct book *first_book)
         printf("There is no book in the system.\n");
     }
 }
-//  till line 284 of book storage
+
 // initializing of the issued books
 struct issue *initialize_issue_books(struct issue *second_issue)
 {
-    struct issue *ptr, *new_issue_book1, *new_issue_book2, *new_issue_book3, *new_issue_book4, *new_issue_book5;
+    struct issue *ptr, *new_issue_book1, *new_issue_book2;
 
     new_issue_book1 = (struct issue *)malloc(sizeof(struct issue));
     new_issue_book1->next = NULL;
     first_issue = new_issue_book1;
     new_issue_book1->issue_book_id = 1111;
-    strcpy(new_issue_book1->issue_book_name, "Concept of Physics");
+    strcpy(new_issue_book1->issue_book_name, "Actual Concept of Physics");
     strcpy(new_issue_book1->issue_book_author, "H.C. Verma");
+    strcpy(new_issue_book1->issue_username, "AKSHAT");
     new_issue_book1->issue_book_year = 2025;
     new_issue_book1->issue_book_price = 2334.34;
     strcpy(new_issue_book1->issue_date, "12/2/2019");
@@ -432,15 +545,57 @@ struct issue *initialize_issue_books(struct issue *second_issue)
     new_issue_book2->issue_book_id = 2341;
     strcpy(new_issue_book2->issue_book_name, "Concept of Physics");
     strcpy(new_issue_book2->issue_book_author, "H.C. Verma");
+    strcpy(new_issue_book2->issue_username, "ABHAY");
     new_issue_book2->issue_book_year = 2025;
     new_issue_book2->issue_book_price = 2334.34;
     strcpy(new_issue_book2->issue_date, "11/2/2018");
     ptr->next = new_issue_book2;
-    // ptr = new_issue_book2;
+    ptr = new_issue_book2;
+    // Issue Book 3
+    struct issue *new_issue_book3 = (struct issue *)malloc(sizeof(struct issue));
+    new_issue_book3->next = NULL;
+
+    new_issue_book3->issue_book_id = 3456;
+    strcpy(new_issue_book3->issue_book_name, "Introduction to Programming");
+    strcpy(new_issue_book3->issue_book_author, "John Doe");
+    strcpy(new_issue_book3->issue_username, "XYZ");
+    new_issue_book3->issue_book_year = 2023;
+    new_issue_book3->issue_book_price = 45.99;
+    strcpy(new_issue_book3->issue_date, "10/5/2020");
+    ptr->next = new_issue_book3;
+    ptr = new_issue_book3;
+
+    // Issue Book 4
+    struct issue *new_issue_book4 = (struct issue *)malloc(sizeof(struct issue));
+    new_issue_book4->next = NULL;
+
+    new_issue_book4->issue_book_id = 4567;
+    strcpy(new_issue_book4->issue_book_name, "Data Structures and Algorithms");
+    strcpy(new_issue_book4->issue_book_author, "Jane Smith");
+    strcpy(new_issue_book4->issue_username, "USER1");
+    new_issue_book4->issue_book_year = 2022;
+    new_issue_book4->issue_book_price = 32.50;
+    strcpy(new_issue_book4->issue_date, "9/1/2021");
+    ptr->next = new_issue_book4;
+    ptr = new_issue_book4;
+
+    // Issue Book 5
+    struct issue *new_issue_book5 = (struct issue *)malloc(sizeof(struct issue));
+    new_issue_book5->next = NULL;
+
+    new_issue_book5->issue_book_id = 5678;
+    strcpy(new_issue_book5->issue_book_name, "Artificial Intelligence");
+    strcpy(new_issue_book5->issue_book_author, "Alan Turing");
+    strcpy(new_issue_book5->issue_username, "USER2");
+    new_issue_book5->issue_book_year = 2024;
+    new_issue_book5->issue_book_price = 55.75;
+    strcpy(new_issue_book5->issue_date, "8/7/2022");
+    ptr->next = new_issue_book5;
+
     // free(ptr);
     return first_issue;
 }
-// taking the issue details
+// taking the issue details 452
 
 struct issue *create_issue(struct issue *second_issue)
 {
@@ -471,13 +626,14 @@ struct issue *create_issue(struct issue *second_issue)
     if (ptr != NULL)
     {
         printf("Valid username......\n");
-
+        // ptr->next_issue
         strcpy(new_issue->issue_username, issue_username1);
 
         // now checking for a valid book id;
         int issue_username1_book_id;
         printf("Enter the book id of the book-: ");
         scanf("%d", &issue_username1_book_id);
+
         struct book *new_book = (struct book *)malloc(sizeof(struct book));
         new_book = first_book;
         while (new_book->book_id != issue_username1_book_id && new_book != NULL)
@@ -500,7 +656,27 @@ struct issue *create_issue(struct issue *second_issue)
             strcpy(new_issue->issue_date, issue_date1);
             //  reducing a book quantity by 1 as , on issueing book the no of book would be reduced
             new_book->book_quantity = new_book->book_quantity - 1;
+
+            struct issue *trial_issue1 = malloc(sizeof(struct issue));
+            ptr->next_issue = trial_issue1;
+            trial_issue1->issue_book_id = issue_username1_book_id;
+            trial_issue1->issue_book_price = new_book->book_price;
+            trial_issue1->issue_book_year = new_book->book_year;
+            strcpy(trial_issue1->issue_book_name, new_book->book_name);
+            strcpy(trial_issue1->issue_book_author, new_book->book_author);
+            strcpy(trial_issue1->issue_username, issue_username1);
+            trial_issue1->next = NULL;
             printf("Congratulate the book is issued.\n");
+            FILE *pf = fopen("issue.txt", "a");
+            if (pf == NULL)
+            {
+                printf("Error in opening file issue.txt \n");
+                return NULL;
+            }
+            fprintf(pf, "BOOK REQUEST DATA:\n");
+            fprintf(pf, "STUDENT NAME                   BOOK ID            DATE \n");
+            fprintf(pf, "%-22s %-20d %-10s\n", issue_username1, issue_username1_book_id, issue_date1);
+            fclose(pf);
         }
     }
     else
@@ -549,7 +725,7 @@ void display_all_issues(struct issue *first_issue)
         while (temp != NULL)
         {
             printf("================================================================================================================ \n \n");
-            printf("temp->ISSUED BOOK DETAIL");
+            printf("ISSUED BOOK DETAIL \n");
             printf("STUDENT USERNAME -: %s \n ", temp->issue_username);
             printf("BOOK ID -: %d \n", temp->issue_book_id);
             printf("BOOK NAME -: %s \n ", temp->issue_book_name);
@@ -573,14 +749,15 @@ void display_all_issues(struct issue *first_issue)
 struct return_book *initailize_return_book(struct return_book *second_return_book)
 {
 
-    struct return_book *ptr, *new_return_book1, *new_return_book2, *new_return_book3, *new_return_book4, *new_return_book5;
+    struct return_book *ptr, *new_return_book1, *new_return_book2;
 
     new_return_book1 = (struct return_book *)malloc(sizeof(struct return_book));
     new_return_book1->next = NULL;
     first_return_book = new_return_book1;
     new_return_book1->return_book_id = 1111;
-    strcpy(new_return_book1->return_book_name, "Concept of Physics");
+    strcpy(new_return_book1->return_book_name, "Returned Concept of Physics");
     strcpy(new_return_book1->return_book_author, "H.C. Verma");
+    strcpy(new_return_book1->return_book_username, "AKSHAT");
     new_return_book1->return_book_year = 2025;
     new_return_book1->return_book_price = 2334.34;
     strcpy(new_return_book1->return_book_date, "12/2/2019");
@@ -592,12 +769,40 @@ struct return_book *initailize_return_book(struct return_book *second_return_boo
     new_return_book2->return_book_id = 2341;
     strcpy(new_return_book2->return_book_name, "Concept of Physics");
     strcpy(new_return_book2->return_book_author, "H.C. Verma");
+    strcpy(new_return_book2->return_book_username, "ABHAY");
     new_return_book2->return_book_year = 2025;
     new_return_book2->return_book_price = 2334.34;
     strcpy(new_return_book2->return_book_date, "11/2/2018");
     ptr->next = new_return_book2;
-    // ptr = new_return_book2;
-    // free(ptr);
+    ptr = new_return_book2;
+
+    // Returned Book 3
+    struct return_book *new_return_book3 = (struct return_book *)malloc(sizeof(struct return_book));
+    new_return_book3->next = NULL;
+
+    new_return_book3->return_book_id = 3456;
+    strcpy(new_return_book3->return_book_name, "Returned Introduction to Programming");
+    strcpy(new_return_book3->return_book_author, "John Doe");
+    strcpy(new_return_book3->return_book_username, "XYZ");
+    new_return_book3->return_book_year = 2023;
+    new_return_book3->return_book_price = 45.99;
+    strcpy(new_return_book3->return_book_date, "9/8/2022");
+    ptr->next = new_return_book3;
+    ptr = new_return_book3;
+
+    // Returned Book 4
+    struct return_book *new_return_book4 = (struct return_book *)malloc(sizeof(struct return_book));
+    new_return_book4->next = NULL;
+
+    new_return_book4->return_book_id = 4567;
+    strcpy(new_return_book4->return_book_name, "Returned Data Structures and Algorithms");
+    strcpy(new_return_book4->return_book_author, "Jane Smith");
+    strcpy(new_return_book4->return_book_username, "USER1");
+    new_return_book4->return_book_year = 2022;
+    new_return_book4->return_book_price = 32.50;
+    strcpy(new_return_book4->return_book_date, "8/1/2023");
+    ptr->next = new_return_book4;
+
     return first_return_book;
 }
 
@@ -622,7 +827,7 @@ struct return_book *create_return_book(struct return_book *second_return_book)
     return_book_username1[strcspn(return_book_username1, "\n")] = '\0';
     struct issue *ptr = (struct issue *)malloc(sizeof(struct issue));
     ptr = first_issue;
-    while (ptr->issue_username != return_book_username1 && ptr != NULL)
+    while (ptr != NULL && strcmp(ptr->issue_username, return_book_username1) != 0)
     {
         ptr = ptr->next;
     }
@@ -647,8 +852,19 @@ struct return_book *create_return_book(struct return_book *second_return_book)
             return_book_date1[strcspn(return_book_date1, "\n")] = '\0';
             strcpy(new_return_book->return_book_author, ptr->issue_book_author);
             strcpy(new_return_book->return_book_name, ptr->issue_book_name);
+            strcpy(new_return_book->return_book_date, return_book_date1);
             new_return_book->return_book_price = ptr->issue_book_price;
             new_return_book->return_book_year = ptr->issue_book_year;
+            FILE *p = fopen("return.txt", "a");
+            if (p == NULL)
+            {
+                printf("Error in opening file issue.txt \n");
+                return NULL;
+            }
+            fprintf(p, "BOOK REQUEST DATA:\n");
+            fprintf(p, "STUDENT NAME                   BOOK ID            DATE \n");
+            fprintf(p, "%s                 %d             %s \n", return_book_username1, return_book_id1, return_book_date1);
+            fclose(p);
             //  now changing data in the actual book list , i.e incremementing the quantity of the book by 1;
             struct book *new_book = (struct book *)malloc(sizeof(struct book));
             new_book = first_book;
@@ -708,7 +924,7 @@ void display_all_return_books(struct return_book *first_return_book)
         while (temp != NULL)
         {
             printf("================================================================================================================ \n \n");
-            printf("temp->return_bookD BOOK DETAIL");
+            printf("BOOK DETAIL \n");
             printf("STUDENT USERNAME -: %s \n ", temp->return_book_username);
             printf("BOOK ID -: %d \n", temp->return_book_id);
             printf("BOOK NAME -: %s \n ", temp->return_book_name);
@@ -860,7 +1076,7 @@ void display_staff()
 struct request_book *initialize_request_book(struct request_book *trial_request_book)
 {
 
-    struct request_book *ptr, *actual_request_book1, *actual_request_book2, *actual_request_book3;
+    struct request_book *ptr, *actual_request_book1, *actual_request_book2;
 
     actual_request_book1 = (struct request_book *)malloc(sizeof(struct request_book));
     actual_request_book1->next = NULL;
@@ -880,7 +1096,9 @@ struct request_book *initialize_request_book(struct request_book *trial_request_
     strcpy(actual_request_book2->request_book_date, "04/11/2023");
     ptr = actual_request_book2;
 
-    actual_request_book3 = (struct request_book *)malloc(sizeof(struct request_book));
+
+    // Requested Book 3
+    struct request_book *actual_request_book3 = (struct request_book *)malloc(sizeof(struct request_book));
     actual_request_book3->next = NULL;
 
     strcpy(actual_request_book3->request_book_name, "WORLD OF FANTASIES");
@@ -888,6 +1106,59 @@ struct request_book *initialize_request_book(struct request_book *trial_request_
     actual_request_book3->request_book_year = 2013;
     strcpy(actual_request_book3->request_book_date, "12/12/2023");
     ptr->next = actual_request_book3;
+    ptr = actual_request_book3;
+
+    // Requested Book 4 (Sports)
+    struct request_book *actual_request_book4 = (struct request_book *)malloc(sizeof(struct request_book));
+    actual_request_book4->next = NULL;
+
+    strcpy(actual_request_book4->request_book_name, "The Art of Sportsmanship");
+    strcpy(actual_request_book4->request_book_author, "John Athlete");
+    actual_request_book4->request_book_year = 2022;
+    strcpy(actual_request_book4->request_book_date, "15/01/2024");
+    ptr->next = actual_request_book4;
+    ptr = actual_request_book4;
+
+    // Requested Book 5 (Economics)
+    struct request_book *actual_request_book5 = (struct request_book *)malloc(sizeof(struct request_book));
+    actual_request_book5->next = NULL;
+
+    strcpy(actual_request_book5->request_book_name, "Economics for Beginners");
+    strcpy(actual_request_book5->request_book_author, "Econ Guru");
+    actual_request_book5->request_book_year = 2023;
+    strcpy(actual_request_book5->request_book_date, "20/02/2024");
+    ptr->next = actual_request_book5;
+    ptr = actual_request_book5;
+
+    // Requested Book 6 (Music)
+    struct request_book *actual_request_book6 = (struct request_book *)malloc(sizeof(struct request_book));
+    actual_request_book6->next = NULL;
+
+    strcpy(actual_request_book6->request_book_name, "History of Jazz");
+    strcpy(actual_request_book6->request_book_author, "Melody Maestro");
+    actual_request_book6->request_book_year = 2018;
+    strcpy(actual_request_book6->request_book_date, "25/03/2024");
+    ptr->next = actual_request_book6;
+
+    // Requested Book 7 (Space)
+    struct request_book *actual_request_book7 = (struct request_book *)malloc(sizeof(struct request_book));
+    actual_request_book7->next = NULL;
+
+    strcpy(actual_request_book7->request_book_name, "Exploring the Cosmos");
+    strcpy(actual_request_book7->request_book_author, "Galaxy Explorer");
+    actual_request_book7->request_book_year = 2021;
+    strcpy(actual_request_book7->request_book_date, "30/04/2024");
+    ptr->next = actual_request_book7;
+
+    // Requested Book 8 (Nanotechnology)
+    struct request_book *actual_request_book8 = (struct request_book *)malloc(sizeof(struct request_book));
+    actual_request_book8->next = NULL;
+
+    strcpy(actual_request_book8->request_book_name, "Nanotech Wonders");
+    strcpy(actual_request_book8->request_book_author, "Nano Scientist");
+    actual_request_book8->request_book_year = 2015;
+    strcpy(actual_request_book8->request_book_date, "15/05/2024");
+    ptr->next = actual_request_book8;
 
     return first_request_book;
 }
@@ -954,100 +1225,312 @@ struct request_book *add_new_request_book(struct request_book *first_request_boo
 }
 
 // initializing students
+// struct student *initialize_student_list(struct student *trial_student)
+// {
+//     struct student *actual_student1 = (struct student *)malloc(sizeof(struct student));
+//     struct student *ptr = (struct student *)malloc(sizeof(struct student));
+//     struct student *actual_student4 = (struct student *)malloc(sizeof(struct student));
+//     struct student *actual_student2 = (struct student *)malloc(sizeof(struct student));
+//     struct student *actual_student3 = (struct student *)malloc(sizeof(struct student));
+//     actual_student1->next = NULL;
+//     if (actual_student1 == NULL)
+//     {
+//         printf("MEMORY ALLOCATION FAILED...\n");
+//         return NULL;
+//     }
+//     student1 = actual_student1;
+//     actual_student1->class_no = 12;
+//     actual_student1->roll_no = 43;
+//     strcpy(actual_student1->username, "AKSHAT");
+//     strcpy(actual_student1->password, "1234");
+//     struct issue *new_issue = (struct issue *)malloc(sizeof(struct issue));
+//     new_issue->issue_book_id = 123456;
+//     new_issue->issue_book_price = 23.56;
+//     new_issue->next = NULL;
+//     actual_student1->next_issue = new_issue;
+//     struct return_book *new_return_book_1 = (struct return_book *)malloc(sizeof(struct return_book));
+//     new_return_book_1->next = NULL;
+//     actual_student1->next_return = new_return_book_1;
+//     ptr = actual_student1;
+
+//     actual_student2->next = NULL;
+//     if (actual_student2 == NULL)
+//     {
+//         printf("MEMORY ALLOCATION FAILED...\n");
+//         return NULL;
+//     }
+
+//     actual_student2->class_no = 2;
+//     actual_student2->roll_no = 13;
+//     strcpy(actual_student2->username, "ANMOL");
+//     strcpy(actual_student2->password, "1234");
+//     struct issue *new_issue_2 = (struct issue *)malloc(sizeof(struct issue));
+//     new_issue_2->next = NULL;
+//     actual_student2->next_issue = new_issue;
+//     struct return_book *new_return_book_2 = (struct return_book *)malloc(sizeof(struct return_book));
+//     new_return_book_2->next = NULL;
+//     actual_student2->next_return = new_return_book_2;
+//     ptr->next = actual_student2;
+//     ptr = actual_student2;
+
+//     actual_student3->next = NULL;
+//     if (actual_student3 == NULL)
+//     {
+//         printf("MEMORY ALLOCATION FAILED...\n");
+//         return NULL;
+//     }
+
+//     actual_student3->class_no = 2;
+//     actual_student3->roll_no = 13;
+//     strcpy(actual_student3->username, "ABHAY");
+//     strcpy(actual_student3->password, "1234");
+//     struct issue *new_issue_3 = (struct issue *)malloc(sizeof(struct issue));
+
+//     new_issue_3->next = NULL;
+//     actual_student3->next_issue = new_issue;
+//     struct return_book *new_return_book_3 = (struct return_book *)malloc(sizeof(struct return_book));
+//     new_return_book_3->next = NULL;
+//     actual_student3->next_return = new_return_book_3;
+//     ptr->next = actual_student3;
+//     ptr = actual_student3;
+
+//     actual_student4->next = NULL;
+//     if (actual_student4 == NULL)
+//     {
+//         printf("MEMORY ALLOCATION FAILED...\n");
+//         return NULL;
+//     }
+
+//     actual_student4->class_no = 2;
+//     actual_student4->roll_no = 13;
+//     strcpy(actual_student4->username, "ABHAY");
+//     strcpy(actual_student4->password, "1234");
+//     struct issue *new_issue_4 = (struct issue *)malloc(sizeof(struct issue));
+//     new_issue_4->next = NULL;
+//     actual_student4->next_issue = new_issue;
+//     struct return_book *new_return_book_4 = (struct return_book *)malloc(sizeof(struct return_book));
+//     new_return_book_4->next = NULL;
+//     actual_student4->next_return = new_return_book_4;
+//     ptr->next = actual_student4;
+//     return student1;
+// }
+// initializing students
 struct student *initialize_student_list(struct student *trial_student)
 {
+    struct student *first_student = NULL;
+    struct student *ptr;
+
+    // Student 1
     struct student *actual_student1 = (struct student *)malloc(sizeof(struct student));
-    struct student *ptr = (struct student *)malloc(sizeof(struct student));
-    struct student *actual_student4 = (struct student *)malloc(sizeof(struct student));
-    struct student *actual_student2 = (struct student *)malloc(sizeof(struct student));
-    struct student *actual_student3 = (struct student *)malloc(sizeof(struct student));
-    actual_student1->next = NULL;
     if (actual_student1 == NULL)
     {
         printf("MEMORY ALLOCATION FAILED...\n");
         return NULL;
     }
-    student1 = actual_student1;
+    actual_student1->next = NULL;
     actual_student1->class_no = 12;
     actual_student1->roll_no = 43;
     strcpy(actual_student1->username, "AKSHAT");
     strcpy(actual_student1->password, "1234");
-    struct issue *new_issue = (struct issue *)malloc(sizeof(struct issue));
-    new_issue->issue_book_id = 123456;
-    new_issue->issue_book_price = 23.56;
-    new_issue->next = NULL;
-    actual_student1->next_issue = new_issue;
+
+    struct issue *new_issue_1 = (struct issue *)malloc(sizeof(struct issue));
+    new_issue_1->next = NULL;
+    actual_student1->next_issue = new_issue_1;
+
     struct return_book *new_return_book_1 = (struct return_book *)malloc(sizeof(struct return_book));
     new_return_book_1->next = NULL;
     actual_student1->next_return = new_return_book_1;
+
+    first_student = actual_student1;
     ptr = actual_student1;
 
-    actual_student2->next = NULL;
+    // Student 2
+    struct student *actual_student2 = (struct student *)malloc(sizeof(struct student));
     if (actual_student2 == NULL)
     {
         printf("MEMORY ALLOCATION FAILED...\n");
         return NULL;
     }
-
-    actual_student2->class_no = 2;
-    actual_student2->roll_no = 13;
+    actual_student2->next = NULL;
+    actual_student2->class_no = 10;
+    actual_student2->roll_no = 21;
     strcpy(actual_student2->username, "ANMOL");
     strcpy(actual_student2->password, "1234");
+
     struct issue *new_issue_2 = (struct issue *)malloc(sizeof(struct issue));
     new_issue_2->next = NULL;
-    actual_student2->next_issue = new_issue;
+    actual_student2->next_issue = new_issue_2;
+
     struct return_book *new_return_book_2 = (struct return_book *)malloc(sizeof(struct return_book));
     new_return_book_2->next = NULL;
     actual_student2->next_return = new_return_book_2;
+
     ptr->next = actual_student2;
     ptr = actual_student2;
 
-    actual_student3->next = NULL;
+    // Student 3
+    struct student *actual_student3 = (struct student *)malloc(sizeof(struct student));
     if (actual_student3 == NULL)
     {
         printf("MEMORY ALLOCATION FAILED...\n");
         return NULL;
     }
-
-    actual_student3->class_no = 2;
-    actual_student3->roll_no = 13;
+    actual_student3->next = NULL;
+    actual_student3->class_no = 10;
+    actual_student3->roll_no = 22;
     strcpy(actual_student3->username, "ABHAY");
     strcpy(actual_student3->password, "1234");
-    struct issue *new_issue_3 = (struct issue *)malloc(sizeof(struct issue));
 
+    struct issue *new_issue_3 = (struct issue *)malloc(sizeof(struct issue));
     new_issue_3->next = NULL;
-    actual_student3->next_issue = new_issue;
+    actual_student3->next_issue = new_issue_3;
+
     struct return_book *new_return_book_3 = (struct return_book *)malloc(sizeof(struct return_book));
     new_return_book_3->next = NULL;
     actual_student3->next_return = new_return_book_3;
+
     ptr->next = actual_student3;
     ptr = actual_student3;
 
-    actual_student4->next = NULL;
+    // Student 4
+    struct student *actual_student4 = (struct student *)malloc(sizeof(struct student));
     if (actual_student4 == NULL)
     {
         printf("MEMORY ALLOCATION FAILED...\n");
         return NULL;
     }
-
-    actual_student4->class_no = 2;
-    actual_student4->roll_no = 13;
-    strcpy(actual_student4->username, "ABHAY");
+    actual_student4->next = NULL;
+    actual_student4->class_no = 11;
+    actual_student4->roll_no = 31;
+    strcpy(actual_student4->username, "AHANA");
     strcpy(actual_student4->password, "1234");
+
     struct issue *new_issue_4 = (struct issue *)malloc(sizeof(struct issue));
     new_issue_4->next = NULL;
-    actual_student4->next_issue = new_issue;
+    actual_student4->next_issue = new_issue_4;
+
     struct return_book *new_return_book_4 = (struct return_book *)malloc(sizeof(struct return_book));
     new_return_book_4->next = NULL;
     actual_student4->next_return = new_return_book_4;
+
     ptr->next = actual_student4;
-    return student1;
+    ptr = actual_student4;
+
+    // Student 5
+    struct student *actual_student5 = (struct student *)malloc(sizeof(struct student));
+    if (actual_student5 == NULL)
+    {
+        printf("MEMORY ALLOCATION FAILED...\n");
+        return NULL;
+    }
+    actual_student5->next = NULL;
+    actual_student5->class_no = 11;
+    actual_student5->roll_no = 32;
+    strcpy(actual_student5->username, "ADITYA");
+    strcpy(actual_student5->password, "1234");
+
+    struct issue *new_issue_5 = (struct issue *)malloc(sizeof(struct issue));
+    new_issue_5->next = NULL;
+    actual_student5->next_issue = new_issue_5;
+
+    struct return_book *new_return_book_5 = (struct return_book *)malloc(sizeof(struct return_book));
+    new_return_book_5->next = NULL;
+    actual_student5->next_return = new_return_book_5;
+
+    ptr->next = actual_student5;
+    ptr = actual_student5;
+
+    // Student 6
+    struct student *actual_student6 = (struct student *)malloc(sizeof(struct student));
+    if (actual_student6 == NULL)
+    {
+        printf("MEMORY ALLOCATION FAILED...\n");
+        return NULL;
+    }
+    actual_student6->next = NULL;
+    actual_student6->class_no = 12;
+    actual_student6->roll_no = 44;
+    strcpy(actual_student6->username, "ALISHA");
+    strcpy(actual_student6->password, "1234");
+
+    struct issue *new_issue_6 = (struct issue *)malloc(sizeof(struct issue));
+    new_issue_6->next = NULL;
+    actual_student6->next_issue = new_issue_6;
+
+    struct return_book *new_return_book_6 = (struct return_book *)malloc(sizeof(struct return_book));
+    new_return_book_6->next = NULL;
+    actual_student6->next_return = new_return_book_6;
+
+    ptr->next = actual_student6;
+
+    return first_student;
+}
+
+// Function to add a new student to the existing list
+struct student *add_new_student(struct student *first_student)
+{
+    struct student *new_student = (struct student *)malloc(sizeof(struct student));
+    if (new_student == NULL)
+    {
+        printf("MEMORY ALLOCATION FAILED...\n");
+        return first_student;
+    }
+
+    printf("Enter class number: ");
+    scanf("%d", &new_student->class_no);
+    
+    printf("Enter roll number: ");
+    scanf("%d", &new_student->roll_no);
+
+    printf("Enter username: ");
+    scanf("%s", new_student->username);
+
+    printf("Enter password: ");
+    scanf("%s", new_student->password);
+
+    new_student->next_issue = (struct issue *)malloc(sizeof(struct issue));
+    new_student->next_issue->next = NULL;
+
+    new_student->next_return = (struct return_book *)malloc(sizeof(struct return_book));
+    new_student->next_return->next = NULL;
+
+    // Adding the new student to the beginning of the list
+    new_student->next = first_student;
+    first_student = new_student;
+
+    return first_student;
+}
+// Function to display the student list along with issue and return details
+void display_student_list(struct student *first_student)
+{
+    struct student *ptr = first_student;
+
+    if (ptr == NULL)
+    {
+        printf("Student list is empty.\n");
+        return;
+    }
+
+    printf("Student List with Issue and Return Details:\n");
+    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("| Class | Roll No | Username | Password | Next Issue Book ID | Next Issue Book Name       | Next Issue Book Author     | Next Return Book ID | Next Return Book Name       | Next Return Book Author     |\n");
+    printf("------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+
+    while (ptr != NULL)
+    {
+        printf("| %-5d | %-7d | %-8s | %-8s | %-18d | %-27s | %-25s | %-19d | %-27s | %-25s |\n",
+               ptr->class_no, ptr->roll_no, ptr->username, ptr->password,
+               ptr->next_issue->issue_book_id, ptr->next_issue->issue_book_name, ptr->next_issue->issue_book_author,
+               ptr->next_return->return_book_id, ptr->next_return->return_book_name, ptr->next_return->return_book_author);
+        printf("------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+        ptr = ptr->next;
+    }
 }
 
 void display_functions_library_head()
 {
     initialize_staff1(head1);
-    printf("||||                                   WELCOME TO THE LIBRARY PORTAL                                                    ||||\n");
+    printf("\n\n||||                                   WELCOME TO THE LIBRARY PORTAL                                                    ||||\n");
     printf("                                    AUTHORIZED ONLY FOR LIBRARY HEAD                                                 \n");
     printf("\n \n \n");
     int choice4a = 1;
@@ -1092,7 +1575,7 @@ void display_functions_library_head()
 void display_supervisor_functions()
 {
     // initialize_lib(first_book);
-    printf("||||                                   WELCOME TO THE LIBRARY PORTAL                                                    ||||\n");
+    printf("\n\n||||                                   WELCOME TO THE LIBRARY PORTAL                                                    ||||\n");
     printf("                                    AUTHORIZED ONLY FOR LIBRARY STAFFS                                                      \n");
     printf("\n \n \n");
     int choice3;
@@ -1175,16 +1658,20 @@ void choose_staff_type_login()
     initialize_lib(first_book);
     initialize_issue_books(first_issue);
     initialize_request_book(first_request_book);
+    initailize_return_book(first_return_book);
     // display_supervisor_functions();
     printf("||||                                   WELCOME TO THE LIBRARY PORTAL                                                    ||||\n");
     printf("                                    AUTHORIZED ONLY FOR LIBRARY STAFFS                                                      \n");
     printf("\n \n \n");
-    printf("                                   CHOOSE THE DESIGNATION FOR LOGIN                                                         \n");
-    printf(" 1. As a Supervisor                                                                         2. As a Library head            \n");
-    printf("Enter 10 to move back.\n");
+    // printf("                                   CHOOSE THE DESIGNATION FOR LOGIN                                                         \n");
+    // printf(" 1. As a Supervisor                                                                         2. As a Library head            \n");
+    // printf("Enter 10 to move back.\n");
     int choice2 = 1;
     do
     {
+        printf("                                   CHOOSE THE DESIGNATION FOR LOGIN                                                         \n");
+        printf(" 1. As a Supervisor                                                                         2. As a Library head            \n");
+        printf("Enter 10 to move back.\n");
         int choice_designation;
         printf("ENTER THE CHOICE -: ");
         scanf("%d", &choice_designation);
@@ -1302,7 +1789,7 @@ void display_student_all_functions(struct student *trial_student)
     printf("||||        WELCOME TO THE LIBRARY PORTAL        ||||\n");
     initialize_student_list(student1);
     initialize_request_book(first_request_book);
-    // initialize_lib(first_book);
+    initialize_lib(first_book);
     int choice_display_student = 1;
     do
     {
