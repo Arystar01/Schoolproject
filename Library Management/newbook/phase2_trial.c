@@ -85,6 +85,7 @@ struct return_book *first_return_book = NULL;
 struct return_book *second_return_book = NULL;
 struct student *student1 = NULL;
 struct student *trial_student = NULL;
+struct student *first_student = NULL;
 struct staff1 *head1 = NULL;
 struct staff1 *head2 = NULL;
 struct book *add_new_book(struct book *);
@@ -295,7 +296,10 @@ struct book *create_book(struct book *trial_book)
         free(new_book); // Free allocated memory before returning
         return NULL;
     }
-    fprintf(f, "Book ID- %d \nBook Name - %s \n Book Authour-%s \n Book Year- %d \n Book Price -%f \n Book Quantity - %d \n", new_book->book_id, new_book->book_name, new_book->book_author, new_book->book_year, new_book->book_price, new_book->book_quantity);
+    // fprintf(f, "Book ID- %d \nBook Name - %s \n Book Authour-%s \n Book Year- %d \n Book Price -%f \n Book Quantity - %d \n", new_book->book_id, new_book->book_name, new_book->book_author, new_book->book_year, new_book->book_price, new_book->book_quantity);
+    fprintf(f, "Book ID- %d \nBook Name - %s \nBook Author-%s \nBook Year- %d \nBook Price -%f \nBook Quantity - %d \n",
+            new_book->book_id, new_book->book_name, new_book->book_author, new_book->book_year, new_book->book_price, new_book->book_quantity);
+
     fclose(f);
     return new_book;
 }
@@ -614,7 +618,7 @@ struct issue *create_issue(struct issue *second_issue)
     issue_username1[strcspn(issue_username1, "\n")] = '\0';
     // scanf("%s", issue_username1);
     struct student *ptr = (struct student *)malloc(sizeof(struct student));
-    ptr = student1;
+    ptr = first_student;
 
     int result;
     result = strcmp(ptr->username, issue_username1);
@@ -634,7 +638,7 @@ struct issue *create_issue(struct issue *second_issue)
         printf("Enter the book id of the book-: ");
         scanf("%d", &issue_username1_book_id);
 
-        struct book *new_book = (struct book *)malloc(sizeof(struct book));
+        struct book *new_book = malloc(sizeof(struct book));
         new_book = first_book;
         while (new_book->book_id != issue_username1_book_id && new_book != NULL)
         {
@@ -645,6 +649,7 @@ struct issue *create_issue(struct issue *second_issue)
             printf("Valid book id. \n");
             new_issue->issue_book_id = issue_username1_book_id;
             strcpy(new_issue->issue_book_author, new_book->book_author);
+
             new_issue->issue_book_price = new_book->book_price;
             new_issue->issue_book_year = new_book->book_year;
             char issue_date1[10];
@@ -657,7 +662,7 @@ struct issue *create_issue(struct issue *second_issue)
             //  reducing a book quantity by 1 as , on issueing book the no of book would be reduced
             new_book->book_quantity = new_book->book_quantity - 1;
 
-            struct issue *trial_issue1 = malloc(sizeof(struct issue));
+            struct issue *trial_issue1 = (struct issue *)malloc(sizeof(struct issue));
             ptr->next_issue = trial_issue1;
             trial_issue1->issue_book_id = issue_username1_book_id;
             trial_issue1->issue_book_price = new_book->book_price;
@@ -863,7 +868,7 @@ struct return_book *create_return_book(struct return_book *second_return_book)
             }
             fprintf(p, "BOOK REQUEST DATA:\n");
             fprintf(p, "STUDENT NAME                   BOOK ID            DATE \n");
-            fprintf(p, "%s                 %d             %s \n", return_book_username1, return_book_id1, return_book_date1);
+            fprintf(p, "%-20s %-10d %-10s \n", return_book_username1, return_book_id1, return_book_date1);
             fclose(p);
             //  now changing data in the actual book list , i.e incremementing the quantity of the book by 1;
             struct book *new_book = (struct book *)malloc(sizeof(struct book));
@@ -1054,7 +1059,7 @@ struct staff1 *initialize_staff1(struct staff1 *head2)
     return head1;
 }
 
-void display_staff()
+void display_staff(struct staff1 *head1)
 {
     struct staff1 *temp = head1;
     if (temp != NULL)
@@ -1085,6 +1090,7 @@ struct request_book *initialize_request_book(struct request_book *trial_request_
     strcpy(actual_request_book1->request_book_author, "J.K ROWLING");
     actual_request_book1->request_book_year = 2003;
     strcpy(actual_request_book1->request_book_date, "05/10/2023");
+    ptr->next = actual_request_book1;
     ptr = actual_request_book1;
 
     actual_request_book2 = (struct request_book *)malloc(sizeof(struct request_book));
@@ -1094,8 +1100,8 @@ struct request_book *initialize_request_book(struct request_book *trial_request_
     strcpy(actual_request_book2->request_book_author, "RONALD REGAN");
     actual_request_book2->request_book_year = 2006;
     strcpy(actual_request_book2->request_book_date, "04/11/2023");
+    ptr->next = actual_request_book2;
     ptr = actual_request_book2;
-
 
     // Requested Book 3
     struct request_book *actual_request_book3 = (struct request_book *)malloc(sizeof(struct request_book));
@@ -1197,6 +1203,17 @@ struct request_book *create_request_book(struct request_book *trial_request_book
     char request_bookdate11[10];
     scanf("%s", request_bookdate11);
     strcpy(new_request_book->request_book_date, request_bookdate11);
+    FILE *fp = fopen("request.txt", "a");
+    if (fp == NULL)
+    {
+        printf("Error in opening file return.txt\n");
+        return NULL;
+    }
+    fprintf(fp, "REQUEST BOOK DETAIL.\n");
+    fprintf(fp, "BOOK NAME            AUTHOR             YEAR           DATE\n");
+    fprintf(fp, "%-20s %-20s %-15d %-10s\n", new_request_book->request_book_name, new_request_book->request_book_author, new_request_book->request_book_year, new_request_book->request_book_date);
+
+    fclose(fp);
 
     printf("Thank you ............");
     new_request_book->next = NULL;
@@ -1223,101 +1240,33 @@ struct request_book *add_new_request_book(struct request_book *first_request_boo
     temp->next = new_request_book;
     return first_request_book;
 }
+// Function to display request book details
+void display_request_books(struct request_book *first_request_book)
+{
+    if (first_request_book == NULL)
+    {
+        printf("Request book list is empty.\n");
+        return;
+    }
+
+    printf("Request Book Details:\n");
+    printf("%-30s %-20s %-10s %-10s\n", "Book Name", "Author", "Year", "Date");
+
+    struct request_book *temp = first_request_book;
+    while (temp != NULL)
+    {
+        printf("%-30s %-20s %-10d %-10s\n",
+               temp->request_book_name, temp->request_book_author,
+               temp->request_book_year, temp->request_book_date);
+        temp = temp->next;
+    }
+}
 
 // initializing students
-// struct student *initialize_student_list(struct student *trial_student)
-// {
-//     struct student *actual_student1 = (struct student *)malloc(sizeof(struct student));
-//     struct student *ptr = (struct student *)malloc(sizeof(struct student));
-//     struct student *actual_student4 = (struct student *)malloc(sizeof(struct student));
-//     struct student *actual_student2 = (struct student *)malloc(sizeof(struct student));
-//     struct student *actual_student3 = (struct student *)malloc(sizeof(struct student));
-//     actual_student1->next = NULL;
-//     if (actual_student1 == NULL)
-//     {
-//         printf("MEMORY ALLOCATION FAILED...\n");
-//         return NULL;
-//     }
-//     student1 = actual_student1;
-//     actual_student1->class_no = 12;
-//     actual_student1->roll_no = 43;
-//     strcpy(actual_student1->username, "AKSHAT");
-//     strcpy(actual_student1->password, "1234");
-//     struct issue *new_issue = (struct issue *)malloc(sizeof(struct issue));
-//     new_issue->issue_book_id = 123456;
-//     new_issue->issue_book_price = 23.56;
-//     new_issue->next = NULL;
-//     actual_student1->next_issue = new_issue;
-//     struct return_book *new_return_book_1 = (struct return_book *)malloc(sizeof(struct return_book));
-//     new_return_book_1->next = NULL;
-//     actual_student1->next_return = new_return_book_1;
-//     ptr = actual_student1;
 
-//     actual_student2->next = NULL;
-//     if (actual_student2 == NULL)
-//     {
-//         printf("MEMORY ALLOCATION FAILED...\n");
-//         return NULL;
-//     }
-
-//     actual_student2->class_no = 2;
-//     actual_student2->roll_no = 13;
-//     strcpy(actual_student2->username, "ANMOL");
-//     strcpy(actual_student2->password, "1234");
-//     struct issue *new_issue_2 = (struct issue *)malloc(sizeof(struct issue));
-//     new_issue_2->next = NULL;
-//     actual_student2->next_issue = new_issue;
-//     struct return_book *new_return_book_2 = (struct return_book *)malloc(sizeof(struct return_book));
-//     new_return_book_2->next = NULL;
-//     actual_student2->next_return = new_return_book_2;
-//     ptr->next = actual_student2;
-//     ptr = actual_student2;
-
-//     actual_student3->next = NULL;
-//     if (actual_student3 == NULL)
-//     {
-//         printf("MEMORY ALLOCATION FAILED...\n");
-//         return NULL;
-//     }
-
-//     actual_student3->class_no = 2;
-//     actual_student3->roll_no = 13;
-//     strcpy(actual_student3->username, "ABHAY");
-//     strcpy(actual_student3->password, "1234");
-//     struct issue *new_issue_3 = (struct issue *)malloc(sizeof(struct issue));
-
-//     new_issue_3->next = NULL;
-//     actual_student3->next_issue = new_issue;
-//     struct return_book *new_return_book_3 = (struct return_book *)malloc(sizeof(struct return_book));
-//     new_return_book_3->next = NULL;
-//     actual_student3->next_return = new_return_book_3;
-//     ptr->next = actual_student3;
-//     ptr = actual_student3;
-
-//     actual_student4->next = NULL;
-//     if (actual_student4 == NULL)
-//     {
-//         printf("MEMORY ALLOCATION FAILED...\n");
-//         return NULL;
-//     }
-
-//     actual_student4->class_no = 2;
-//     actual_student4->roll_no = 13;
-//     strcpy(actual_student4->username, "ABHAY");
-//     strcpy(actual_student4->password, "1234");
-//     struct issue *new_issue_4 = (struct issue *)malloc(sizeof(struct issue));
-//     new_issue_4->next = NULL;
-//     actual_student4->next_issue = new_issue;
-//     struct return_book *new_return_book_4 = (struct return_book *)malloc(sizeof(struct return_book));
-//     new_return_book_4->next = NULL;
-//     actual_student4->next_return = new_return_book_4;
-//     ptr->next = actual_student4;
-//     return student1;
-// }
-// initializing students
 struct student *initialize_student_list(struct student *trial_student)
 {
-    struct student *first_student = NULL;
+
     struct student *ptr;
 
     // Student 1
@@ -1478,7 +1427,7 @@ struct student *add_new_student(struct student *first_student)
 
     printf("Enter class number: ");
     scanf("%d", &new_student->class_no);
-    
+
     printf("Enter roll number: ");
     scanf("%d", &new_student->roll_no);
 
@@ -1494,9 +1443,44 @@ struct student *add_new_student(struct student *first_student)
     new_student->next_return = (struct return_book *)malloc(sizeof(struct return_book));
     new_student->next_return->next = NULL;
 
-    // Adding the new student to the beginning of the list
-    new_student->next = first_student;
-    first_student = new_student;
+    // Adding the new student to the end of the list
+    new_student->next = NULL;
+
+    if (first_student == NULL)
+    {
+        // If the list is empty, the new student is the first student
+        first_student = new_student;
+    }
+    else
+    {
+        // Traverse the list to find the last student
+        struct student *current = first_student;
+        while (current->next != NULL)
+        {
+            current = current->next;
+        }
+        // Append the new student to the end of the list
+        current->next = new_student;
+    }
+
+    // // Adding the new student to the beginning of the list
+    // new_student->next = first_student;
+    // first_student = new_student;
+    // Open the file in append mode and write student data
+    FILE *file = fopen("student.txt", "a");
+    if (file == NULL)
+    {
+        printf("Error in opening file students.txt\n");
+        return first_student;
+    }
+
+    fprintf(file, "Class: %d, Roll: %d, Username: %s, Password: %s\n",
+            new_student->class_no, new_student->roll_no,
+            new_student->username, new_student->password);
+
+    fclose(file);
+
+    printf("Successfully login..\n");
 
     return first_student;
 }
@@ -1529,6 +1513,7 @@ void display_student_list(struct student *first_student)
 
 void display_functions_library_head()
 {
+    initialize_student_list(student1);
     initialize_staff1(head1);
     printf("\n\n||||                                   WELCOME TO THE LIBRARY PORTAL                                                    ||||\n");
     printf("                                    AUTHORIZED ONLY FOR LIBRARY HEAD                                                 \n");
@@ -1539,7 +1524,8 @@ void display_functions_library_head()
         printf("1 . To insert a new staff member.\n");
         printf("2 . To Delete a staff member.\n");
         printf("3 . To Display all the staff members.\n");
-        printf("10. To exit the function. \n");
+        printf("4 . To display the list of all students.\n");
+        printf("0. To exit the function. \n");
         int choose_functions_library_head;
         scanf("%d", &choose_functions_library_head);
         switch (choose_functions_library_head)
@@ -1553,10 +1539,14 @@ void display_functions_library_head()
             choice4a = 1;
             break;
         case 3:
-            display_staff();
+            display_staff(head1);
             choice4a = 1;
             break;
-        case 10:
+        case 4:
+            display_student_list(first_student);
+            choice4a = 1;
+            break;
+        case 0:
             choice4a = 0;
             break;
         default:
@@ -1591,7 +1581,8 @@ void display_supervisor_functions()
         printf("6.To dislplay all the issued books. \n");
         printf("7.To return a book. \n");
         printf("8.To display all the return books.\n");
-        printf("10.To exit the function system.\n");
+        printf("9.To display the requst books.\n");
+        printf("0.To exit the function system.\n");
         int choose_functions_library_staff;
         scanf("%d", &choose_functions_library_staff);
         switch (choose_functions_library_staff)
@@ -1642,7 +1633,11 @@ void display_supervisor_functions()
             display_all_return_books(first_return_book);
             printf("END OF THE RETURNED BOOK LIST.........\n");
             break;
-        case 10:
+        case 9:
+            printf("OPENING A REQUEST BOOK PAGE.......\n");
+            display_request_books(first_request_book);
+            break;
+        case 0:
             choice3 = 0;
             break;
         default:
@@ -1671,7 +1666,7 @@ void choose_staff_type_login()
     {
         printf("                                   CHOOSE THE DESIGNATION FOR LOGIN                                                         \n");
         printf(" 1. As a Supervisor                                                                         2. As a Library head            \n");
-        printf("Enter 10 to move back.\n");
+        printf("Enter 0 to move back.\n");
         int choice_designation;
         printf("ENTER THE CHOICE -: ");
         scanf("%d", &choice_designation);
@@ -1764,7 +1759,7 @@ void choose_staff_type_login()
             // choice2 = 0;
 
             break;
-        case 10:
+        case 0:
             choice2 = 0;
             break;
         default:
@@ -1800,7 +1795,7 @@ void display_student_all_functions(struct student *trial_student)
         printf("4.To look for your returned book.\n");
         printf("5.To display all the books.\n");
 
-        printf("10.To exit.\n");
+        printf("0.To exit.\n");
         int choice13;
         printf("Enter your choice.");
         scanf("%d", &choice13);
@@ -1841,7 +1836,7 @@ void display_student_all_functions(struct student *trial_student)
             display_book_details(first_book);
             break;
 
-        case 10:
+        case 0:
             printf("EXITING...........\n");
             choice_display_student = 0;
             break;
@@ -1856,7 +1851,7 @@ void display_student_all_functions(struct student *trial_student)
 void choose_student_type_login()
 {
     // initialize the list of the student.
-    initialize_student_list(trial_student);
+    initialize_student_list(first_student);
     //  dont worry about this error it is because of not linking
     initialize_lib(first_book);
     printf("||||        WELCOME TO THE LIBRARY PORTAL        ||||\n");
@@ -1867,16 +1862,18 @@ void choose_student_type_login()
     {
         printf("              CHOOSE THE MODE OF LOGIN                 \n\n");
         printf("1. AS A NEW STUDENT                 2. LOGIN AS A STUDENT \n\n");
-        printf("Enter 10 to move back.\n");
+        printf("Enter 0 to move back.\n");
         printf("ENTER YOUR CHOICE-: ");
         int choice_abcd;
         scanf("%d", &choice_abcd);
         switch (choice_abcd)
         {
         case 1:
-
-            // choice_choose_student_type_login = 0;
+            add_new_student(first_student);
+            printf("Now engter\n");
             break;
+            // choice_choose_student_type_login = 0;
+
         case 2:
             printf("ENTER YOUR USERNAME-: ");
             char student_username_1a[100];
@@ -1886,7 +1883,7 @@ void choose_student_type_login()
             scanf("%s", student_password1a);
 
             struct student *temp = (struct student *)malloc(sizeof(struct student));
-            temp = student1;
+            temp = first_student;
 
             int result123a = strcmp(temp->username, student_username_1a);
             int result223a = strcmp(temp->password, student_password1a);
@@ -1910,7 +1907,7 @@ void choose_student_type_login()
             }
 
             break;
-        case 10:
+        case 0:
             choice_choose_student_type_login = 0;
             break;
         default:
@@ -1928,7 +1925,7 @@ void choose_type_login()
     {
         printf("PLEASE CHOOSE LOGIN TYPE \n");
         printf("1.As a student                   2.As a library staff\n");
-        printf("Enter 10 to move back.\n");
+        printf("Enter 0 to move back.\n");
 
         int choice_a1;
         scanf("%d", &choice_a1);
@@ -1945,7 +1942,7 @@ void choose_type_login()
 
             // choice_choose_type_login = 0;
             break;
-        case 10:
+        case 0:
             choice_choose_type_login = 0;
             break;
         default:
@@ -1957,18 +1954,18 @@ void choose_type_login()
 }
 void allinitialize()
 {
-    // initialize the list of the student.
-    // initialize_student_list(trial_student);
-    //  dont worry about this error it is because of not linking
-    initialize_lib(first_book);
-    initialize_student_list(student1);
-    initialize_request_book(first_request_book);
     // initialize_lib(first_book);
+    // initialize_issue_books(first_issue);
+    // initialize_request_book(first_request_book);
+    // initailize_return_book(first_return_book);
+    // initialize_student_list(first_student);
+    // initialize_staff1(head1);
 }
 int main()
 {
 
     greeting();
+    // allinitialize();
     choose_type_login();
 
     return 0;

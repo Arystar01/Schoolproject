@@ -1,0 +1,3 @@
+Class: 12, Roll: 12, Username: aryan, Password: 1234
+Class: 22, Roll: 122, Username: aryan, Password: 2222
+Class: 2, Roll: 12, Username: sohan, Password: 2222

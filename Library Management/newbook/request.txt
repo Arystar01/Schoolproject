@@ -1,0 +1,3 @@
+REQUEST BOOK DETAIL.
+BOOK NAME            AUTHOR             YEAR           DATE
+LOVER 89             IMON SELPF           2011            23/2/24   
