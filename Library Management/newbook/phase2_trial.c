@@ -1,18 +1,7 @@
-//  correct code
-
 #include <stdio.h>
 #include <string.h>
-// #include <conio.h>
 #include <stdlib.h>
-// #include "book.h"
-// #include "trial_book_storage.h"
-// #include "trial_issue.h"
-// #include "trial_library.h"
-// #include "super_header.h"
 
-//  declaration of all staff , student , issue.
-
-//
 struct book
 {
     int book_id;
